@@ -1,0 +1,132 @@
+/* PRO-dark-XFCE-4.20 — GTK4 dark color overrides
+   GTK4 loads this file ON TOP of gtk.css when the system color-scheme is prefer-dark
+   (gsettings set org.gnome.desktop.interface color-scheme prefer-dark).
+   Only colors are redefined here; all widget rules from gtk.css apply automatically. */
+
+/*************************************************************/
+/*                  DARK COLOR TOKENS                        */
+/*************************************************************/
+
+@define-color window_bg_color #383C4A;
+@define-color window_fg_color #D3DAE3;
+@define-color view_bg_color #404552;
+@define-color view_fg_color #D3DAE3;
+@define-color headerbar_bg_color #2e3240;
+@define-color headerbar_fg_color #D3DAE3;
+@define-color headerbar_border_color rgba(0, 0, 0, 0.35);
+@define-color headerbar_backdrop_color #353848;
+@define-color headerbar_shade_color rgba(0, 0, 0, 0.2);
+@define-color card_bg_color #454a5a;
+@define-color card_fg_color #D3DAE3;
+@define-color card_shade_color rgba(0, 0, 0, 0.2);
+@define-color dialog_bg_color #383C4A;
+@define-color dialog_fg_color #D3DAE3;
+@define-color popover_bg_color #3c4150;
+@define-color popover_fg_color #D3DAE3;
+@define-color shade_color rgba(0, 0, 0, 0.2);
+@define-color scrollbar_outline_color rgba(0, 0, 0, 0.5);
+@define-color accent_bg_color #206AD9;
+@define-color accent_fg_color #ffffff;
+@define-color accent_color #5b9ee1;
+@define-color destructive_bg_color #c0392b;
+@define-color destructive_fg_color #ffffff;
+@define-color destructive_color #ff6b6b;
+@define-color success_bg_color #5a9e3a;
+@define-color success_fg_color #ffffff;
+@define-color success_color #8fd464;
+@define-color warning_bg_color #d08030;
+@define-color warning_fg_color #ffffff;
+@define-color warning_color #f0a050;
+@define-color error_bg_color #c0392b;
+@define-color error_fg_color #ffffff;
+@define-color error_color #ff6b6b;
+@define-color sidebar_bg_color #2e3240;
+@define-color sidebar_fg_color #D3DAE3;
+@define-color sidebar_backdrop_color #353848;
+@define-color sidebar_shade_color rgba(0, 0, 0, 0.2);
+@define-color thumbnail_bg_color #454a5a;
+@define-color thumbnail_fg_color #D3DAE3;
+@define-color link_color #7ab8f5;
+@define-color borders rgba(0, 0, 0, 0.35);
+@define-color unfocused_borders rgba(0, 0, 0, 0.25);
+
+/*************************************************************/
+/*  DARK-SPECIFIC WIDGET OVERRIDES                           */
+/*  (only needed where gtk.css uses hardcoded colors)        */
+/*************************************************************/
+
+/* Window close button stays red but slightly muted in dark mode */
+windowcontrols button.close {
+  background-color: #c0392b;
+  color: #ffffff;
+  border-color: rgba(0, 0, 0, 0.25);
+}
+
+windowcontrols button.close:hover {
+  background-color: #e74c3c;
+}
+
+/* Entry fields need a visible background against dark window */
+entry,
+.entry {
+  background-color: #404552;
+  color: #D3DAE3;
+  border-color: rgba(0, 0, 0, 0.4);
+  caret-color: @accent_color;
+}
+
+entry:focus,
+.entry:focus {
+  border-color: @accent_color;
+  box-shadow: 0 0 0 1px alpha(@accent_color, 0.4);
+}
+
+/* Scrollbar slider is lighter on dark backgrounds */
+scrollbar slider {
+  background-color: rgba(211, 218, 227, 0.3);
+}
+
+scrollbar slider:hover {
+  background-color: rgba(211, 218, 227, 0.5);
+}
+
+/* Switch track is darker */
+switch {
+  background-color: rgba(211, 218, 227, 0.15);
+  border-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Tooltip stays dark (already dark in light mode, just reinforce) */
+tooltip {
+  background-color: rgba(22, 25, 37, 0.95);
+  color: #D3DAE3;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Overshoot indicators adjusted for dark backgrounds */
+scrolledwindow overshoot.top {
+  background-image: radial-gradient(farthest-side at center top, rgba(91, 158, 225, 0.25), rgba(91, 158, 225, 0));
+}
+
+scrolledwindow overshoot.bottom {
+  background-image: radial-gradient(farthest-side at center bottom, rgba(91, 158, 225, 0.25), rgba(91, 158, 225, 0));
+}
+
+scrolledwindow overshoot.left {
+  background-image: radial-gradient(farthest-side at left center, rgba(91, 158, 225, 0.25), rgba(91, 158, 225, 0));
+}
+
+scrolledwindow overshoot.right {
+  background-image: radial-gradient(farthest-side at right center, rgba(91, 158, 225, 0.25), rgba(91, 158, 225, 0));
+}
+
+/* Button hover needs stronger contrast on dark */
+button:hover {
+  background-color: #4e5467;
+  border-color: rgba(91, 158, 225, 0.4);
+}
+
+/* Headerbar box shadow is more subtle on dark */
+headerbar {
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.08);
+}

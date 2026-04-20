@@ -1,53 +1,9 @@
 /* PRO-dark-XFCE-4.20 — GTK4 compatibility layer
    Maps the theme's visual identity into GTK4 CSS.
-   XFCE 4.20 core components remain GTK3; this covers GTK4 apps running on the desktop. */
+   XFCE 4.20 core components remain GTK3; this covers GTK4 apps running on the desktop.
+   Colors are defined in _colors.css — edit there to change the palette. */
 
-/*************************************************************/
-/*                  COLOR DEFINITION                         */
-/*************************************************************/
-
-@define-color window_bg_color #dde2e7;
-@define-color window_fg_color #202020;
-@define-color view_bg_color #ffffff;
-@define-color view_fg_color #202020;
-@define-color headerbar_bg_color #dedcdf;
-@define-color headerbar_fg_color #303030;
-@define-color headerbar_border_color rgba(105, 105, 105, 0.3);
-@define-color headerbar_backdrop_color #eff0f2;
-@define-color headerbar_shade_color rgba(0, 0, 0, 0.07);
-@define-color card_bg_color #ffffff;
-@define-color card_fg_color #202020;
-@define-color card_shade_color rgba(0, 0, 0, 0.07);
-@define-color dialog_bg_color #dde2e7;
-@define-color dialog_fg_color #202020;
-@define-color popover_bg_color #f0f1f3;
-@define-color popover_fg_color #202020;
-@define-color shade_color rgba(0, 0, 0, 0.07);
-@define-color scrollbar_outline_color rgba(255, 255, 255, 0.5);
-@define-color accent_bg_color #5597e1;
-@define-color accent_fg_color #ffffff;
-@define-color accent_color #5597e1;
-@define-color destructive_bg_color #f46067;
-@define-color destructive_fg_color #ffffff;
-@define-color destructive_color #f46067;
-@define-color success_bg_color #73d216;
-@define-color success_fg_color #ffffff;
-@define-color success_color #73d216;
-@define-color warning_bg_color #F27835;
-@define-color warning_fg_color #ffffff;
-@define-color warning_color #F27835;
-@define-color error_bg_color #FC4138;
-@define-color error_fg_color #ffffff;
-@define-color error_color #FC4138;
-@define-color sidebar_bg_color #dde2e7;
-@define-color sidebar_fg_color #202020;
-@define-color sidebar_backdrop_color #e5e9ed;
-@define-color sidebar_shade_color rgba(0, 0, 0, 0.07);
-@define-color thumbnail_bg_color #dde2e7;
-@define-color thumbnail_fg_color #202020;
-@define-color link_color #1954ad;
-@define-color borders rgba(105, 105, 105, 0.3);
-@define-color unfocused_borders rgba(105, 105, 105, 0.2);
+@import "_colors.css";
 
 /*************************************************************/
 /*                  BASE WIDGET STYLES                       */
