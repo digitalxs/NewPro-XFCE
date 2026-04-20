@@ -1,0 +1,438 @@
+/* PRO-dark-XFCE-4.20 — GTK4 compatibility layer
+   Maps the theme's visual identity into GTK4 CSS.
+   XFCE 4.20 core components remain GTK3; this covers GTK4 apps running on the desktop. */
+
+/*************************************************************/
+/*                  COLOR DEFINITION                         */
+/*************************************************************/
+
+@define-color window_bg_color #dde2e7;
+@define-color window_fg_color #202020;
+@define-color view_bg_color #ffffff;
+@define-color view_fg_color #202020;
+@define-color headerbar_bg_color #dedcdf;
+@define-color headerbar_fg_color #303030;
+@define-color headerbar_border_color rgba(105, 105, 105, 0.3);
+@define-color headerbar_backdrop_color #eff0f2;
+@define-color headerbar_shade_color rgba(0, 0, 0, 0.07);
+@define-color card_bg_color #ffffff;
+@define-color card_fg_color #202020;
+@define-color card_shade_color rgba(0, 0, 0, 0.07);
+@define-color dialog_bg_color #dde2e7;
+@define-color dialog_fg_color #202020;
+@define-color popover_bg_color #f0f1f3;
+@define-color popover_fg_color #202020;
+@define-color shade_color rgba(0, 0, 0, 0.07);
+@define-color scrollbar_outline_color rgba(255, 255, 255, 0.5);
+@define-color accent_bg_color #5597e1;
+@define-color accent_fg_color #ffffff;
+@define-color accent_color #5597e1;
+@define-color destructive_bg_color #f46067;
+@define-color destructive_fg_color #ffffff;
+@define-color destructive_color #f46067;
+@define-color success_bg_color #73d216;
+@define-color success_fg_color #ffffff;
+@define-color success_color #73d216;
+@define-color warning_bg_color #F27835;
+@define-color warning_fg_color #ffffff;
+@define-color warning_color #F27835;
+@define-color error_bg_color #FC4138;
+@define-color error_fg_color #ffffff;
+@define-color error_color #FC4138;
+@define-color sidebar_bg_color #dde2e7;
+@define-color sidebar_fg_color #202020;
+@define-color sidebar_backdrop_color #e5e9ed;
+@define-color sidebar_shade_color rgba(0, 0, 0, 0.07);
+@define-color thumbnail_bg_color #dde2e7;
+@define-color thumbnail_fg_color #202020;
+@define-color link_color #1954ad;
+@define-color borders rgba(105, 105, 105, 0.3);
+@define-color unfocused_borders rgba(105, 105, 105, 0.2);
+
+/*************************************************************/
+/*                  BASE WIDGET STYLES                       */
+/*************************************************************/
+
+* {
+  outline-color: alpha(@accent_color, 0.5);
+  outline-width: 2px;
+  outline-offset: -1px;
+}
+
+window,
+.background {
+  background-color: @window_bg_color;
+  color: @window_fg_color;
+}
+
+window.messagedialog,
+window.dialog {
+  background-color: @dialog_bg_color;
+  color: @dialog_fg_color;
+}
+
+/*************************************************************/
+/*                  HEADER BAR                               */
+/*************************************************************/
+
+headerbar {
+  min-height: 30px;
+  padding: 0 6px;
+  background-color: @headerbar_bg_color;
+  color: @headerbar_fg_color;
+  border-bottom: 1px solid @headerbar_border_color;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.5);
+}
+
+headerbar:backdrop {
+  background-color: @headerbar_backdrop_color;
+  color: alpha(@headerbar_fg_color, 0.7);
+  border-bottom-color: @unfocused_borders;
+}
+
+headerbar .title {
+  font-weight: bold;
+}
+
+headerbar .subtitle {
+  font-size: smaller;
+  opacity: 0.7;
+}
+
+windowcontrols button {
+  min-width: 22px;
+  min-height: 22px;
+  padding: 2px;
+  border-radius: 50%;
+  border: 1px solid @headerbar_border_color;
+  background-color: @headerbar_bg_color;
+  color: @headerbar_fg_color;
+}
+
+windowcontrols button:hover {
+  background-color: @headerbar_backdrop_color;
+}
+
+windowcontrols button.close {
+  background-color: #f46067;
+  color: #F8F8F9;
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+windowcontrols button.close:hover {
+  background-color: #f68086;
+}
+
+windowcontrols button.maximize {
+  background-color: @headerbar_bg_color;
+}
+
+windowcontrols button.minimize {
+  background-color: @headerbar_bg_color;
+}
+
+/*************************************************************/
+/*                  BUTTONS                                  */
+/*************************************************************/
+
+button {
+  min-height: 22px;
+  padding: 4px 8px;
+  border-radius: 5px;
+  border: 1px solid @borders;
+  background-color: @window_bg_color;
+  color: @window_fg_color;
+  transition: all 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+button:hover {
+  background-color: mix(@window_bg_color, @accent_bg_color, 0.9);
+  border-color: alpha(@accent_bg_color, 0.5);
+}
+
+button:active,
+button:checked {
+  background-color: @accent_bg_color;
+  color: @accent_fg_color;
+  border-color: @accent_bg_color;
+}
+
+button:disabled {
+  opacity: 0.45;
+}
+
+button.suggested-action {
+  background-color: @accent_bg_color;
+  color: @accent_fg_color;
+  border-color: shade(@accent_bg_color, 0.9);
+}
+
+button.destructive-action {
+  background-color: @destructive_bg_color;
+  color: @destructive_fg_color;
+  border-color: shade(@destructive_bg_color, 0.9);
+}
+
+/*************************************************************/
+/*                  ENTRY / TEXT INPUT                       */
+/*************************************************************/
+
+entry,
+.entry {
+  min-height: 24px;
+  padding: 4px 8px;
+  border-radius: 5px;
+  border: 1px solid @borders;
+  background-color: @view_bg_color;
+  color: @view_fg_color;
+  caret-color: @accent_color;
+}
+
+entry:focus,
+.entry:focus {
+  border-color: @accent_color;
+  box-shadow: 0 0 0 1px alpha(@accent_color, 0.35);
+}
+
+entry:disabled,
+.entry:disabled {
+  opacity: 0.45;
+}
+
+entry.error {
+  border-color: @error_color;
+  box-shadow: 0 0 0 1px alpha(@error_color, 0.35);
+}
+
+/*************************************************************/
+/*                  SELECTION                                */
+/*************************************************************/
+
+selection,
+*:selected {
+  background-color: @accent_bg_color;
+  color: @accent_fg_color;
+}
+
+/*************************************************************/
+/*                  LISTVIEW / TREEVIEW                      */
+/*************************************************************/
+
+listview,
+treeview.view {
+  background-color: @view_bg_color;
+  color: @view_fg_color;
+}
+
+listview row:selected,
+treeview.view row:selected {
+  background-color: @accent_bg_color;
+  color: @accent_fg_color;
+}
+
+listview row:hover,
+treeview.view row:hover {
+  background-color: alpha(@accent_bg_color, 0.1);
+}
+
+/*************************************************************/
+/*                  SCROLLBARS                               */
+/*************************************************************/
+
+scrollbar {
+  background-color: transparent;
+  transition: opacity 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+scrollbar slider {
+  min-width: 6px;
+  min-height: 6px;
+  border-radius: 10px;
+  background-color: alpha(@window_fg_color, 0.35);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+scrollbar slider:hover {
+  background-color: alpha(@window_fg_color, 0.55);
+}
+
+scrollbar slider:active {
+  background-color: @accent_bg_color;
+}
+
+scrollbar.horizontal slider {
+  min-height: 6px;
+  min-width: 40px;
+}
+
+scrollbar.vertical slider {
+  min-height: 40px;
+  min-width: 6px;
+}
+
+/*************************************************************/
+/*                  NOTEBOOK / TABS                          */
+/*************************************************************/
+
+notebook > header {
+  background-color: @window_bg_color;
+  border-color: @borders;
+}
+
+notebook > header tab {
+  padding: 4px 12px;
+  border-radius: 5px 5px 0 0;
+  color: alpha(@window_fg_color, 0.7);
+}
+
+notebook > header tab:checked {
+  background-color: @view_bg_color;
+  color: @window_fg_color;
+}
+
+/*************************************************************/
+/*                  CHECK / RADIO                            */
+/*************************************************************/
+
+checkbutton check,
+radiobutton radio {
+  min-width: 16px;
+  min-height: 16px;
+  border: 1px solid @borders;
+  background-color: @view_bg_color;
+  border-radius: 3px;
+}
+
+radiobutton radio {
+  border-radius: 50%;
+}
+
+checkbutton check:checked,
+radiobutton radio:checked {
+  background-color: @accent_bg_color;
+  border-color: @accent_bg_color;
+  color: @accent_fg_color;
+}
+
+/*************************************************************/
+/*                  PROGRESS BAR                             */
+/*************************************************************/
+
+progressbar trough {
+  border-radius: 4px;
+  background-color: alpha(@window_fg_color, 0.12);
+}
+
+progressbar progress {
+  border-radius: 4px;
+  background-color: @accent_bg_color;
+}
+
+/*************************************************************/
+/*                  TOOLTIP                                  */
+/*************************************************************/
+
+tooltip {
+  background-color: rgba(41, 33, 33, 0.9);
+  color: #ffffff;
+  border-radius: 4px;
+  padding: 4px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/*************************************************************/
+/*                  MENU / POPOVER                           */
+/*************************************************************/
+
+popover {
+  background-color: @popover_bg_color;
+  color: @popover_fg_color;
+  border: 1px solid @borders;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+popover modelbutton {
+  padding: 6px 16px;
+  border-radius: 4px;
+}
+
+popover modelbutton:hover {
+  background-color: alpha(@accent_bg_color, 0.12);
+}
+
+/*************************************************************/
+/*                  SIDEBAR                                  */
+/*************************************************************/
+
+.sidebar {
+  background-color: @sidebar_bg_color;
+  color: @sidebar_fg_color;
+}
+
+.sidebar row:selected {
+  background-color: @accent_bg_color;
+  color: @accent_fg_color;
+}
+
+/*************************************************************/
+/*                  OVERSHOOT INDICATORS                     */
+/*************************************************************/
+
+scrolledwindow overshoot.top {
+  background-image: radial-gradient(farthest-side at center top, rgba(82, 148, 226, 0.2), rgba(82, 148, 226, 0));
+  background-size: 100% 60%;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-color: transparent;
+}
+
+scrolledwindow overshoot.bottom {
+  background-image: radial-gradient(farthest-side at center bottom, rgba(82, 148, 226, 0.2), rgba(82, 148, 226, 0));
+  background-size: 100% 60%;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-color: transparent;
+}
+
+scrolledwindow overshoot.left {
+  background-image: radial-gradient(farthest-side at left center, rgba(82, 148, 226, 0.2), rgba(82, 148, 226, 0));
+  background-size: 60% 100%;
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-color: transparent;
+}
+
+scrolledwindow overshoot.right {
+  background-image: radial-gradient(farthest-side at right center, rgba(82, 148, 226, 0.2), rgba(82, 148, 226, 0));
+  background-size: 60% 100%;
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-color: transparent;
+}
+
+/*************************************************************/
+/*                  SWITCHES                                 */
+/*************************************************************/
+
+switch {
+  border-radius: 14px;
+  background-color: alpha(@window_fg_color, 0.2);
+  border: 1px solid @borders;
+  min-width: 44px;
+  min-height: 22px;
+}
+
+switch:checked {
+  background-color: @accent_bg_color;
+  border-color: @accent_bg_color;
+}
+
+switch slider {
+  border-radius: 50%;
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  min-width: 18px;
+  min-height: 18px;
+}
