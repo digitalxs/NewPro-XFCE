@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=X-GNOME-Metatheme
+Name=PRO-dark-XFCE-4.20
+Comment=A professional dark GTK/XFCE theme for XFCE 4.20 on Debian 13
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=PRO-dark-XFCE-4.20
+MetacityTheme=PRO-dark-XFCE-4.20
+IconTheme=hicolor
+CursorTheme=default
+ButtonLayout=menu:minimize,maximize,close

@@ -75,14 +75,6 @@
 
 * {
   background-clip: padding-box;
-  -GtkToolButton-icon-spacing: 4;
-  -GtkTextView-error-underline-color: #FC4138;
-  -GtkScrolledWindow-scrollbar-spacing: 0;
-  -GtkToolItemGroup-expander-size: 11;
-  -GtkWidget-text-handle-width: 20;
-  -GtkWidget-text-handle-height: 20;
-  -GtkDialog-button-spacing: 4;
-  -GtkDialog-action-area-border: 0;
   }
 *:disabled {
   -gtk-icon-effect: dim; }
@@ -104,9 +96,9 @@
 
 @keyframes needs_attention {
   from {
-    background-image: -gtk-gradient(radial, center center, 0, center center, 0.01, to(#5597e1), to(transparent)); }
+    background-image: radial-gradient(circle at center, #5597e1 0%, transparent 1%); }
   to {
-    background-image: -gtk-gradient(radial, center center, 0, center center, 0.5, to(#5597e1), to(transparent)); }}
+    background-image: radial-gradient(circle at center, #5597e1 0%, transparent 50%); }}
 
 
 /******************************************************/
@@ -2539,7 +2531,7 @@ button stacksidebar row.needs-attention > label,
 stacksidebar button row.needs-attention > label {
 
   animation: needs_attention 150ms ease-in;
-  background-image: -gtk-gradient(radial, center center, 0, center center, 0.5, to(#5597e1), to(transparent));
+  background-image: radial-gradient(circle at center, #5597e1 0%, transparent 50%);
   background-size: 6px 6px, 6px 6px;
   background-repeat: no-repeat;
   background-position: right 3px, right 4px; }
@@ -8928,7 +8920,7 @@ scrolledwindow viewport.frame {
 
 scrolledwindow overshoot.top {
 
-  background-image: -gtk-gradient(radial, center top, 0, center top, 0.6, from(rgba(82, 148, 226, 0.2)), to(rgba(82, 148, 226, 0)));
+  background-image: radial-gradient(farthest-side at center top, rgba(82, 148, 226, 0.2), rgba(82, 148, 226, 0));
   background-size: 100% 60%;
   background-repeat: no-repeat;
   background-position: center top;
@@ -8938,7 +8930,7 @@ scrolledwindow overshoot.top {
 
 scrolledwindow overshoot.bottom {
 
-  background-image: -gtk-gradient(radial, center bottom, 0, center bottom, 0.6, from(rgba(82, 148, 226, 0.2)), to(rgba(82, 148, 226, 0)));
+  background-image: radial-gradient(farthest-side at center bottom, rgba(82, 148, 226, 0.2), rgba(82, 148, 226, 0));
   background-size: 100% 60%;
   background-repeat: no-repeat;
   background-position: center bottom;
@@ -8948,7 +8940,7 @@ scrolledwindow overshoot.bottom {
 
 scrolledwindow overshoot.left {
 
-  background-image: -gtk-gradient(radial, left center, 0, left center, 0.6, from(rgba(82, 148, 226, 0.2)), to(rgba(82, 148, 226, 0)));
+  background-image: radial-gradient(farthest-side at left center, rgba(82, 148, 226, 0.2), rgba(82, 148, 226, 0));
   background-size: 60% 100%;
   background-repeat: no-repeat;
   background-position: left center;
@@ -8958,7 +8950,7 @@ scrolledwindow overshoot.left {
 
 scrolledwindow overshoot.right {
 
-  background-image: -gtk-gradient(radial, right center, 0, right center, 0.6, from(rgba(82, 148, 226, 0.2)), to(rgba(82, 148, 226, 0)));
+  background-image: radial-gradient(farthest-side at right center, rgba(82, 148, 226, 0.2), rgba(82, 148, 226, 0));
   background-size: 60% 100%;
   background-repeat: no-repeat;
   background-position: right center;
