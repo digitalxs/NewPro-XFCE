@@ -59,10 +59,45 @@ sliders, progress bars, and more. Some examples:
 
 The GTK4 layer is customizable the same way via `gtk-4.0/_colors.css`.
 
+### Dark theme accent
+
+The dark variant (`gtk-3.0/gtk-dark.css`) has its own two-token accent block at
+the top of the file:
+
+```css
+@define-color accent_bg_color   #206ad9;   /* strong accent: selections, active window button */
+@define-color accent_soft_color #5294e2;   /* soft accent: buttons, focus, checkboxes, overshoot */
+```
+
+Change both to recolor the dark theme's accent. Keep `accent_soft_color` opaque —
+transparency is applied automatically where needed. Matching pairs:
+
+| Variant | strong / soft |
+|---------|---------------|
+| Blue (default) | `#206ad9` / `#5294e2` |
+| Teal | `#148f77` / `#1abc9c` |
+| Purple | `#7d3cad` / `#9b59b6` |
+| Green | `#1e8449` / `#27ae60` |
+
+## Icons
+
+This theme pairs best with the **Papirus** icon set, which is referenced by
+`index.theme` (`IconTheme=Papirus-Dark`). Install it on Debian 13:
+
+```
+sudo apt install papirus-icon-theme
+```
+
+Then select it in **Settings → Appearance → Icons**:
+
+- **Papirus-Dark** — light icons, recommended for this theme's dark panel
+- **Papirus** — dark icons, for light panels
+
 ## Dependencies
 
 - `gtk2-engines-murrine` — required for GTK2 rendering
 - `gtk2-engines-pixbuf` — required for GTK2 pixmap assets
+- `papirus-icon-theme` — recommended icon set (see [Icons](#icons))
 
 ## License
 
