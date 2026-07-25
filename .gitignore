@@ -1,0 +1,19 @@
+# OS / desktop cruft
+.DS_Store
+Thumbs.db
+*~
+*.swp
+*.swo
+
+# Editor / IDE
+.vscode/
+.idea/
+
+# Backup & temp
+*.bak
+*.orig
+*.tmp
+
+# Duplicate-file artifacts (e.g. "* (copy).*", "* (copy 1).*")
+*\ (copy)*.rc
+*\ (copy\ *).rc

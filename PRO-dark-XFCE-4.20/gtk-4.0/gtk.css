@@ -70,13 +70,13 @@ windowcontrols button:hover {
 }
 
 windowcontrols button.close {
-  background-color: #f46067;
-  color: #F8F8F9;
+  background-color: @destructive_bg_color;
+  color: @destructive_fg_color;
   border-color: rgba(0, 0, 0, 0.12);
 }
 
 windowcontrols button.close:hover {
-  background-color: #f68086;
+  background-color: shade(@destructive_bg_color, 1.08);
 }
 
 windowcontrols button.maximize {
