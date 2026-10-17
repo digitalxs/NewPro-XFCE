@@ -98,7 +98,8 @@ xfconf-query -c xfce4-panel -l -v 2>/dev/null |
     while read -r plugin; do
         echo "set $plugin/button-icon"
         if [ "$dry_run" -eq 0 ]; then
-            xfconf-query -c xfce4-panel -p "$plugin/button-icon" -s "$chosen"
+            # -n -t string: the property only exists once the icon was changed
+            xfconf-query -c xfce4-panel -p "$plugin/button-icon" -n -t string -s "$chosen" ||
+                { echo "failed to set $plugin/button-icon" >&2; exit 1; }
         fi
     done
-exit 0

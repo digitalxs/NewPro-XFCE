@@ -11,11 +11,20 @@ FIXTURES = ROOT / "tests" / "fixtures" / "os-release"
 
 STUB = textwrap.dedent("""\
     #!/bin/sh
-    # Stub xfconf-query: answers reads from fixtures, logs writes.
+    # Stub xfconf-query: answers reads from fixtures, logs writes. Like the
+    # real tool, -s on a property that does not exist fails unless -n is given.
     case "$*" in
       *"-c xsettings -p /Net/IconThemeName"*) echo "${STUB_ICON_THEME:-Papirus}" ;;
       *"-c xfce4-panel -l -v"*) cat "$STUB_PLUGINS" ;;
-      *" -s "*) echo "$*" >> "$STUB_LOG" ;;
+      *" -s "*)
+        prop=$(echo "$*" | sed -n 's/.* -p \([^ ]*\).*/\1/p')
+        case " $* " in
+          *" -n "*) ;;
+          *) grep -q "^$prop " "$STUB_PLUGINS" || {
+               echo "Property \"$prop\" does not exist on channel \"xfce4-panel\"." >&2
+               exit 1; } ;;
+        esac
+        echo "$*" >> "$STUB_LOG" ;;
       *) exit 1 ;;
     esac
     """)
@@ -63,7 +72,7 @@ class DistroLogoTest(unittest.TestCase):
         self.assertEqual(r.returncode, 0, r.stderr)
         self.assertIn("logo: distributor-logo-debian", r.stdout)
         self.assertEqual(self.writes(), [
-            "-c xfce4-panel -p /plugins/plugin-1/button-icon -s distributor-logo-debian"])
+            "-c xfce4-panel -p /plugins/plugin-1/button-icon -n -t string -s distributor-logo-debian"])
 
     def test_logo_field_wins(self):
         self.add_icon("fedora-logo-icon.png")
@@ -87,8 +96,8 @@ class DistroLogoTest(unittest.TestCase):
         self.set_plugins({1: "applicationsmenu", 4: "clock", 7: "whiskermenu"})
         self.run_script("debian")
         self.assertEqual(self.writes(), [
-            "-c xfce4-panel -p /plugins/plugin-1/button-icon -s distributor-logo-debian",
-            "-c xfce4-panel -p /plugins/plugin-7/button-icon -s distributor-logo-debian"])
+            "-c xfce4-panel -p /plugins/plugin-1/button-icon -n -t string -s distributor-logo-debian",
+            "-c xfce4-panel -p /plugins/plugin-7/button-icon -n -t string -s distributor-logo-debian"])
         self.log.write_text("")
         self.set_plugins({4: "clock"})
         r = self.run_script("debian")
@@ -118,6 +127,25 @@ class DistroLogoTest(unittest.TestCase):
         self.add_icon("distributor-logo-opensuse.svg")
         r = self.run_script("opensuse-tumbleweed")
         self.assertIn("logo: distributor-logo-opensuse", r.stdout)
+
+    def test_sets_icon_on_default_panel(self):
+        """A panel whose menu icon was never changed has no button-icon property."""
+        self.add_icon("distributor-logo-debian.svg")
+        r = self.run_script("debian")
+        self.assertEqual(r.returncode, 0, r.stderr)
+        self.assertEqual(len(self.writes()), 1, r.stderr)
+
+    def test_os_release_is_never_executed(self):
+        marker = self.tmp / "pwned"
+        evil = self.tmp / "evil-os-release"
+        evil.write_text(f'ID="$(touch {marker})"\nLOGO=`touch {marker}`\n')
+        r = subprocess.run(["sh", str(SCRIPT), "--dry-run", "--os-release", str(evil)],
+                           capture_output=True, text=True,
+                           env=dict(os.environ, PATH=f"{self.tmp / 'bin'}:{os.environ['PATH']}",
+                                    NEWPRO_ICON_DIRS=str(self.icons), STUB_LOG=str(self.log),
+                                    STUB_PLUGINS=str(self.plugins)))
+        self.assertFalse(marker.exists())
+        self.assertEqual(r.returncode, 0)
 
     def test_bad_argument(self):
         r = self.run_script("debian", "--bogus")
