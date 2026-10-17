@@ -7,6 +7,6 @@ Encoding=UTF-8
 [X-GNOME-Metatheme]
 GtkTheme=PRO-dark-XFCE-4.20
 MetacityTheme=PRO-dark-XFCE-4.20
-IconTheme=Papirus-Dark
-CursorTheme=default
+IconTheme=Papirus
+CursorTheme=Bibata-Modern-Ice
 ButtonLayout=menu:minimize,maximize,close
