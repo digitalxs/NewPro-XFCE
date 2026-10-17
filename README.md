@@ -137,7 +137,10 @@ metric-compatible alternative to Segoe UI. The theme never sets a font itself �
 choose it in **Settings → Appearance → Fonts**.
 
 **Panel:** the Thunar-style panel applies when the panel's *Background → Style*
-is **None (use system style)** (Panel Preferences → Appearance). Rounded panel
+is **None (use system style)** (Panel Preferences → Appearance). Also turn off
+*Panel Preferences → Display → Dark mode* (on by default in Xfce 4.20):
+otherwise the panel's menus (Applications menu, right-click menus) use the
+dark variant instead of the light, Thunar-style menus. Rounded panel
 and menu corners need a compositor — xfwm4's own or picom
 (`sudo apt install picom`, then `cp extras/picom.conf ~/.config/picom/` and
 turn off *Window Manager Tweaks → Compositor*). Without one, menus fall

@@ -90,6 +90,25 @@ class Gtk3RadiusTest(unittest.TestCase):
                 self.assertIn(menu_rule, css)
                 self.assertIn(popup_rule, css)
 
+    def test_menu_backgrounds_opaque(self):
+        """Popup windows are transparent (for the rounded corners), so a
+        translucent menu background lets windows show through the menu."""
+        for name in GTK3:
+            with self.subTest(file=name):
+                bad = []
+                for m in RULE.finditer(strip_comments((THEME / name).read_text())):
+                    parts = {p.strip() for p in " ".join(m.group(1).split()).split(",")}
+                    # the menu node itself, not things drawn on it (separators, items)
+                    if not any(p.startswith(("menu", ".menu", ".context-menu", "context-menu"))
+                               and not re.search(r"[\s>]", p)
+                               and "menuitem" not in p and "menubar" not in p for p in parts):
+                        continue
+                    for decl in re.findall(r"background(?:-color|-image)?\s*:[^;]+", m.group(2)):
+                        alphas = [float(a) for a in re.findall(r"rgba\([^)]*,\s*([0-9.]+)\s*\)", decl)]
+                        if any(a < 1 for a in alphas):
+                            bad.append(decl[:80])
+                self.assertEqual(bad, [])
+
     def test_menubar_item_top_rounded(self):
         rule = ("menubar > menuitem:hover, menubar > menuitem:active, "
                 ".menubar > menuitem:hover, .menubar > menuitem:active "

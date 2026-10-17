@@ -8054,7 +8054,7 @@ menu:not(.context-menu):not(context-menu){
   border-bottom-left-radius: 5px;
   border-bottom-right-radius:5px;*/
   background-color: transparent;
-   background-image:linear-gradient(to bottom left,rgba(242,243,246,0.92),rgba(219,224,230,0.93),rgba(215,220,226,0.93));
+   background-image:linear-gradient(to bottom left,rgb(242,243,246),rgb(219,224,230),rgb(215,220,226));
  /* background-image:linear-gradient(to bottom left,rgba(252,252,252,0.92),rgba(246,246,246,0.93),rgba(217,222,228,0.93),rgba(213,218,224,0.93));*/}
 
 menu.context-menu:not(.menu):not(menu),
@@ -8072,7 +8072,7 @@ context-menu,
   border-bottom-left-radius: 5px;
   border-bottom-right-radius:5px;*/
   background-color: transparent;
-  background-image:linear-gradient(to bottom left,rgba(242,243,246,0.92),rgba(219,224,230,0.93),rgba(215,220,226,0.93));
+  background-image:linear-gradient(to bottom left,rgb(242,243,246),rgb(219,224,230),rgb(215,220,226));
  /* background-image:linear-gradient(to bottom left,rgba(245,246,249,0.92),rgba(242,243,246,0.93),rgba(217,222,228,0.93),rgba(213,218,224,0.93));*/}
 
 .context-menu separator,
