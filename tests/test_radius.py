@@ -98,5 +98,27 @@ class Gtk3RadiusTest(unittest.TestCase):
                 self.assertEqual(later, [])
 
 
+class Gtk4RadiusTest(unittest.TestCase):
+    TOKENS = {"--radius-small": "6px", "--radius-medium": "8px", "--radius-window": "10px"}
+    VARS = {"var(--radius-small)", "var(--radius-medium)", "var(--radius-window)"}
+
+    def test_gtk4_radius_tokens_defined(self):
+        css = strip_comments((THEME / "gtk-4.0/_colors.css").read_text())
+        root = re.search(r":root\s*\{([^}]*)\}", css)
+        self.assertIsNotNone(root, ":root block missing")
+        found = dict(re.findall(r"(--radius-[a-z]+)\s*:\s*([^;]+);", root.group(1)))
+        self.assertEqual(found, self.TOKENS)
+
+    def test_gtk4_radius_uses_tokens(self):
+        bad = [(l, s[:60], t) for l, s, t in radius_tokens(THEME / "gtk-4.0/gtk.css")
+               if t not in {"0", "0px"} | PILL | self.VARS]
+        self.assertEqual(bad, [])
+
+    def test_gtk4_dark_builds_on_light(self):
+        """GTK4 loads gtk-dark.css INSTEAD of gtk.css, so it must import it first."""
+        css = strip_comments((THEME / "gtk-4.0/gtk-dark.css").read_text()).strip()
+        self.assertTrue(css.startswith('@import "gtk.css";'), css[:80])
+
+
 if __name__ == "__main__":
     unittest.main()

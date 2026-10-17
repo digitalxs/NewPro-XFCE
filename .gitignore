@@ -17,3 +17,7 @@ Thumbs.db
 # Duplicate-file artifacts (e.g. "* (copy).*", "* (copy 1).*")
 *\ (copy)*.rc
 *\ (copy\ *).rc
+
+# Python
+__pycache__/
+*.pyc

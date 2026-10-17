@@ -1,7 +1,9 @@
 /* PRO-dark-XFCE-4.20 — GTK4 dark color overrides
-   GTK4 loads this file ON TOP of gtk.css when the system color-scheme is prefer-dark
-   (gsettings set org.gnome.desktop.interface color-scheme prefer-dark).
-   Only colors are redefined here; all widget rules from gtk.css apply automatically. */
+   GTK4 loads this file INSTEAD of gtk.css when the system color-scheme is
+   prefer-dark (gsettings set org.gnome.desktop.interface color-scheme prefer-dark),
+   so it imports gtk.css first and then redefines only the colors. */
+
+@import "gtk.css";
 
 /*************************************************************/
 /*                  DARK COLOR TOKENS                        */

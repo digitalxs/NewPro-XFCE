@@ -94,7 +94,7 @@ windowcontrols button.minimize {
 button {
   min-height: 22px;
   padding: 4px 8px;
-  border-radius: 5px;
+  border-radius: var(--radius-small);
   border: 1px solid @borders;
   background-color: @window_bg_color;
   color: @window_fg_color;
@@ -137,7 +137,7 @@ entry,
 .entry {
   min-height: 24px;
   padding: 4px 8px;
-  border-radius: 5px;
+  border-radius: var(--radius-small);
   border: 1px solid @borders;
   background-color: @view_bg_color;
   color: @view_fg_color;
@@ -203,7 +203,7 @@ scrollbar {
 scrollbar slider {
   min-width: 6px;
   min-height: 6px;
-  border-radius: 10px;
+  border-radius: 50%;
   background-color: alpha(@window_fg_color, 0.35);
   border: 2px solid transparent;
   background-clip: padding-box;
@@ -238,7 +238,7 @@ notebook > header {
 
 notebook > header tab {
   padding: 4px 12px;
-  border-radius: 5px 5px 0 0;
+  border-radius: var(--radius-small) var(--radius-small) 0 0;
   color: alpha(@window_fg_color, 0.7);
 }
 
@@ -257,7 +257,7 @@ radiobutton radio {
   min-height: 16px;
   border: 1px solid @borders;
   background-color: @view_bg_color;
-  border-radius: 3px;
+  border-radius: var(--radius-small);
 }
 
 radiobutton radio {
@@ -276,12 +276,12 @@ radiobutton radio:checked {
 /*************************************************************/
 
 progressbar trough {
-  border-radius: 4px;
+  border-radius: var(--radius-small);
   background-color: alpha(@window_fg_color, 0.12);
 }
 
 progressbar progress {
-  border-radius: 4px;
+  border-radius: var(--radius-small);
   background-color: @accent_bg_color;
 }
 
@@ -292,7 +292,7 @@ progressbar progress {
 tooltip {
   background-color: rgba(41, 33, 33, 0.9);
   color: #ffffff;
-  border-radius: 4px;
+  border-radius: var(--radius-small);
   padding: 4px 8px;
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -305,13 +305,13 @@ popover {
   background-color: @popover_bg_color;
   color: @popover_fg_color;
   border: 1px solid @borders;
-  border-radius: 6px;
+  border-radius: var(--radius-medium);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 popover modelbutton {
   padding: 6px 16px;
-  border-radius: 4px;
+  border-radius: var(--radius-small);
 }
 
 popover modelbutton:hover {

@@ -2,6 +2,14 @@
    Imported by gtk.css (light) and overridden by gtk-dark.css (dark).
    Edit colors here; widget rules in gtk.css pick them up automatically. */
 
+/* Radius scale (GTK >= 4.16 custom properties). Change a value here and
+   every widget using it follows. */
+:root {
+  --radius-small: 6px;   /* buttons, entries, tabs, tooltips, progress, checks */
+  --radius-medium: 8px;  /* popovers, menus */
+  --radius-window: 10px; /* window / headerbar corners */
+}
+
 /*************************************************************/
 /*                  LIGHT COLOR TOKENS                       */
 /*************************************************************/
