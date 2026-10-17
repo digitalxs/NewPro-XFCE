@@ -76,9 +76,13 @@ class Gtk3RadiusTest(unittest.TestCase):
                 self.assertEqual(broken, [])
 
     def test_menu_corners_rounded_except_top_left(self):
-        menu_rule = ("menu, .menu, .context-menu, .popup decoration, "
-                     ".csd.popup decoration { border-radius: 0 8px 8px 8px; }")
-        popup_rule = ("window.popup, window.popup.background { "
+        # Scoped to .csd popups: GTK3 only gives popups the .csd class when the
+        # screen is composited, so without a compositor menus stay square
+        # instead of showing black corners.
+        menu_rule = ("window.csd.popup menu, window.csd.popup .menu, "
+                     "window.csd.popup .context-menu, .csd.popup decoration "
+                     "{ border-radius: 0 8px 8px 8px; }")
+        popup_rule = ("window.csd.popup, window.csd.popup.background { "
                       "background-color: transparent; background-image: none; }")
         for name in GTK3:
             with self.subTest(file=name):
@@ -103,7 +107,9 @@ class Gtk3RadiusTest(unittest.TestCase):
 
     def test_menu_rule_not_overridden_later(self):
         """No rule after the menu block sets a radius on menus or popup decorations."""
-        targets = {"menu", ".menu", ".context-menu", ".popup decoration", ".csd.popup decoration"}
+        targets = {"menu", ".menu", ".context-menu", ".popup decoration", ".csd.popup decoration",
+                   "window.csd.popup menu", "window.csd.popup .menu",
+                   "window.csd.popup .context-menu"}
         for name in GTK3:
             with self.subTest(file=name):
                 text = (THEME / name).read_text()

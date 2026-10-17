@@ -140,8 +140,9 @@ choose it in **Settings → Appearance → Fonts**.
 is **None (use system style)** (Panel Preferences → Appearance). Rounded panel,
 menu and window corners need a compositor — xfwm4's own or picom
 (`sudo apt install picom`, then `cp extras/picom.conf ~/.config/picom/` and
-turn off *Window Manager Tweaks → Compositor*). Without one, corners are drawn
-square.
+turn off *Window Manager Tweaks → Compositor*). Without one, menus and
+windows fall back to square corners; the panel's two rounded bottom corners
+show as small black notches, so keep a compositor running or ignore them.
 
 ## Distro logo
 
