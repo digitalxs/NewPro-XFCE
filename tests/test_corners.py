@@ -13,7 +13,7 @@ TOOL = ROOT / "tools" / "make-corners.py"
 STATES = ["active", "inactive", "active-shaded"]
 SOURCE = {"active": "title-1-active", "inactive": "title-1-inactive",
           "active-shaded": "title-1-active-shaded"}
-RADIUS = 10
+RADIUS = 6  # smaller radius: xfwm4 cannot anti-alias, so steps show less at 6px
 HEIGHT = 26
 
 
@@ -39,7 +39,7 @@ class CornersTest(unittest.TestCase):
 
     @classmethod
     def run_tool(cls):
-        subprocess.run([sys.executable, "-I", str(TOOL), "--radius", str(RADIUS),
+        subprocess.run([sys.executable, "-I", str(TOOL),
                         "--xfwm-dir", str(cls.dir)], check=True, capture_output=True)
 
     def corner(self, side, state):

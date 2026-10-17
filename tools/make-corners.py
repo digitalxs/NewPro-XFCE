@@ -7,7 +7,7 @@ title-1-*.xpm, so the corners blend into the title gradient. XPM has no
 partial alpha: pixels less than half covered are transparent, partly covered
 pixels are mixed toward the frame edge colour.
 
-Usage: tools/make-corners.py [--radius 10] [--xfwm-dir PRO-dark-XFCE-4.20/xfwm4]
+Usage: tools/make-corners.py [--radius 6] [--xfwm-dir PRO-dark-XFCE-4.20/xfwm4]
 """
 import argparse
 import re
@@ -85,7 +85,7 @@ def left_corner(row_colours, radius):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    parser.add_argument("--radius", type=int, default=10)
+    parser.add_argument("--radius", type=int, default=6)
     parser.add_argument("--xfwm-dir", type=Path,
                         default=Path(__file__).resolve().parent.parent / "PRO-dark-XFCE-4.20" / "xfwm4")
     args = parser.parse_args()
