@@ -1,18 +1,13 @@
 # Screenshots
 
-Drop preview images here so they render in the main `README.md`.
-
-Suggested shots (PNG, ~1280px wide):
+Images used by the main `README.md` (v2.3, Debian 13 / XFCE 4.20, Segoe UI,
+Papirus, picom).
 
 | File | Shows |
 |------|-------|
-| `desktop.png` | Full desktop with panel + window manager |
-| `light.png` | A window using the light GTK theme |
-| `dark.png` | The same window in dark mode |
-| `widgets.png` | A widget-factory / controls showcase |
+| `thunar.png` | Thunar: menu bar, path bar, sidebar, window corners |
+| `menu.png` | A menu bar dropdown: rounded corners, square top-left |
+| `widgets.png` | `gtk3-widget-factory`: buttons, entries, linked groups, tabs |
+| `kvantum.png` | `kvantumpreview` with the PRO-XFCE Kvantum theme |
 
-Once added, reference them in `README.md`, e.g.:
-
-```markdown
-![Desktop](screenshots/desktop.png)
-```
+Only neutral windows are captured — no personal window titles or files.
