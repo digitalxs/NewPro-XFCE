@@ -32,7 +32,7 @@ class DocsTest(unittest.TestCase):
                 self.assertTrue((ROOT / ref).is_file())
 
     def test_picom_extra(self):
-        self.assertIn("corner-radius = 10;", (ROOT / "extras" / "picom.conf").read_text())
+        self.assertRegex((ROOT / "extras" / "picom.conf").read_text(), r"(?m)^corner-radius = 0;")  # window bottoms stay square
 
 
 if __name__ == "__main__":
