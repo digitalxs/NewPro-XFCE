@@ -19,6 +19,13 @@
     with this program; if not, write to the Free Software Foundation, Inc.,
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.*/
 
+/* Radius scale: small 6px, medium 8px, window 10px.
+   small  — buttons, entries, spin/combo boxes, tooltips, focus rings, troughs, rows
+   medium — menus, popovers, notifications, frames, cards, dialogs
+   window — headerbar / CSD window top corners (matches xfwm4 and picom)
+   0 stays 0 (flush or linked edges, maximized/tiled windows); pills stay round.
+   GTK3 has no CSS variables — keep values on this scale. */
+
 
 /*************************************************************/
 /*                  COLOR DEFINITION                         */
@@ -185,7 +192,7 @@
 				  0px  1px alpha(#202020, 0.3),
 				  0px  2px alpha(#202020, 0.05);
   background-color: @accent_bg_color;
-  border-radius: 2px; }
+  border-radius: 6px; }
 
 .view:selected:focus {
   
@@ -196,7 +203,7 @@
 				  0px  1px alpha(#202020, 0.3),
 				  0px  2px alpha(#202020, 0.05);
   background-color: @accent_bg_color;
-  border-radius: 2px; }
+  border-radius: 6px; }
 
 /*************VIEW CHECKBUTTONS ****************************/
 
@@ -268,7 +275,7 @@
 				  0px  1px alpha(#202020, 0.3),
 				  0px  2px alpha(#202020, 0.05);
   background-color: @accent_bg_color; 
-  border-radius: 2px; }
+  border-radius: 6px; }
 
 .view text:selected:focus{
 
@@ -279,7 +286,7 @@
 				  1px  0px alpha(#202020, 0.05),
 				  0px  1px alpha(#202020, 0.3),
 				  0px  2px alpha(#202020, 0.05);
-  border-radius: 2px; } 
+  border-radius: 6px; } 
 
 .view text selection{
 
@@ -323,7 +330,7 @@ iconview text:selected{
 				  0px  1px alpha(#202020, 0.3),
 				  0px  2px alpha(#202020, 0.05);
   background-color: @accent_bg_color; 
-  border-radius: 2px; }
+  border-radius: 6px; }
 
 iconview text:selected:focus{
 
@@ -334,7 +341,7 @@ iconview text:selected:focus{
 				  0px  1px alpha(#202020, 0.3),
 				  0px  2px alpha(#202020, 0.05);
   background-color: @accent_bg_color; 
-  border-radius: 2px;}
+  border-radius: 6px;}
 
 iconview text selection:focus{
 
@@ -447,7 +454,7 @@ textview text:selected{
 				  0px  1px alpha(#202020, 0.3),
 				  0px  2px alpha(#202020, 0.05);
   background-color: @accent_bg_color;
-  border-radius: 2px; }
+  border-radius: 6px; }
 
 textview text:selected:focus {
 
@@ -458,7 +465,7 @@ textview text:selected:focus {
 				  0px  1px alpha(#202020, 0.3),
 				  0px  2px alpha(#202020, 0.05);
   background-color: @accent_bg_color;
-  border-radius: 2px; }
+  border-radius: 6px; }
 
 textview border {
 
@@ -524,7 +531,7 @@ iconview:selected {
 				  0px  1px alpha(#202020, 0.3),
 				  0px  2px alpha(#202020, 0.05);
   background-color: @accent_bg_color;
-  border-radius: 2px; }
+  border-radius: 6px; }
 
 iconview:selected:focus {
 
@@ -535,7 +542,7 @@ iconview:selected:focus {
 				  0px  1px alpha(#202020, 0.3),
 				  0px  2px alpha(#202020, 0.05);
   background-color: @accent_bg_color;
-  border-radius: 2px;}
+  border-radius: 6px;}
 
 /******************************************************/
 /* rubberband                                         */
@@ -563,7 +570,7 @@ border: 1px solid #1954ad;
 flowbox flowboxchild {
 
   padding: 3px;
-  border-radius: 2px; }
+  border-radius: 6px; }
 
 flowbox flowboxchild:selected{
 
@@ -702,13 +709,13 @@ treeview.view.expander:checked {
 treeview.view.progressbar{
 
   color: #ffffff;
-  border-radius: 5px;
+  border-radius: 6px;
   background-color: @accent_bg_color; }
 
 treeview.view.progressbar:focus {
 
   color: #ffffff;
-  border-radius: 5px;
+  border-radius: 6px;
   background-color: @accent_bg_color; }
 
 treeview.view.progressbar:selected{
@@ -739,21 +746,21 @@ treeview.view.trough {
 
   color: #202020;
   background-color: rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
+  border-radius: 6px;
   border-width: 0; }
 
 treeview.view.trough:selected{
 
   color: #ffffff;
   background-color: rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
+  border-radius: 6px;
   border-width: 0; }
 
 treeview.view.trough:selected:focus {
 
   color: #ffffff;
   background-color: rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
+  border-radius: 6px;
   border-width: 0; }
 
 /*****treeview headerbutton**************/
@@ -1107,7 +1114,7 @@ opacity: 0.55; }
 popover{
 
   padding: 6px;
-  border-radius: 5px;
+  border-radius: 8px;
  
   background-color: transparent;
   background-image:linear-gradient(to bottom left,rgba(235,240,244,1),rgba(235,240,244,0.7),rgba(235,240,244,1)); 
@@ -1346,7 +1353,7 @@ entry {
   min-height: 22px;
   padding: 2px 8px;
   caret-color: currentColor;
-  border-radius: 5px;
+  border-radius: 6px;
   /*transition: all 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);*/
   color: #202020;
   border: 1px solid;
@@ -1357,7 +1364,7 @@ entry {
   background-image: linear-gradient(to bottom,rgba(255,255,255,1),
                                               rgba(255,255,255,1)); }
 entry.search {
-  border-radius: 5px; }
+  border-radius: 6px; }
 
 entry image {
 
@@ -1379,7 +1386,7 @@ entry.flat{
   padding: 2px;
   background-image: none;
   border-color: transparent;
-  border-radius: 5px; }
+  border-radius: 6px; }
 
 entry.flat:focus {
 
@@ -1387,7 +1394,7 @@ entry.flat:focus {
   padding: 2px;
   background-image: none;
   border-color: transparent;
-  border-radius: 5px; }
+  border-radius: 6px; }
 
 
 entry:focus {
@@ -1630,7 +1637,7 @@ button {
   transition: all 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
   font-weight: normal;
   border: 1px solid;
-  border-radius: 5px;
+  border-radius: 6px;
   padding-left: 6px;
   padding-right: 6px;
   padding-top:3px;
@@ -1824,7 +1831,7 @@ button.file separator {
 button.sidebar-button {
 
   color: rgba(37,37,37,0.55);
-  border-radius: 5px;
+  border-radius: 6px;
   border-right-color: rgba(0,0,0,0.12);
   border-left-color: rgba(0,0,0,0.12);
   border-bottom-color: rgba(0, 0, 0, 0.18);
@@ -1882,7 +1889,7 @@ button.text-button.image-button label:last-child {
 
 button.text-button.image-button label:only-child {
 
-  border-radius: 5px;
+  border-radius: 6px;
   padding-left: 8px;
   padding-right: 8px; }
 
@@ -2642,7 +2649,7 @@ toolbar.osd{
 
   padding: 7px;
   border: 1px solid rgba(0, 0, 0, 0.5);
-  border-radius: 5px;
+  border-radius: 8px;
   background-color: rgba(53, 57, 69, 0.85); }
 
 toolbar.osd.left{
@@ -2731,7 +2738,7 @@ toolbar.bottom-toolbar button{
   .primary-toolbar entry {
 
   color: #202020;
-  border-radius: 3px;
+  border-radius: 6px;
   border: 1px solid;
   border-color: rgba(105, 105, 105, 0.5);
   background-color: rgba(255, 255, 255,1); }
@@ -2852,7 +2859,7 @@ toolbar.bottom-toolbar button{
   min-height: 16px;
   min-width: 16px;
   border: 1px solid;
-  border-radius: 5px;
+  border-radius: 6px;
   padding-left: 6px;
   padding-right: 6px;
   padding-top:3px;
@@ -3031,22 +3038,22 @@ toolbar.bottom-toolbar button{
 
   border-top-right-radius:0px;
   border-bottom-right-radius:0px;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
   margin-left: 0px;
   border-style: solid;}
 
 .primary-toolbar .linked:not(.vertical).path-bar > button:only-child {
 
-  border-radius: 5px;
+  border-radius: 6px;
   border-style: solid;}
 
 .primary-toolbar .linked:not(.vertical).path-bar > button:last-child {
 
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
   margin-left: 0px;
   border-style: solid;}
 
@@ -3193,7 +3200,7 @@ primary-toolbar .linked:not(.vertical):not(.path-bar) > entry.warning + entry.er
 .primary-toolbar .linked:not(.vertical):not(path-bar) > button {
 
   color: #202020;
-  border-radius: 5px;
+  border-radius: 6px;
   border-right-color: rgba(0,0,0,0.12);
   border-left-color: rgba(0,0,0,0.12);
   border-bottom-color: rgba(0, 0, 0, 0.2);
@@ -3204,7 +3211,7 @@ primary-toolbar .linked:not(.vertical):not(.path-bar) > entry.warning + entry.er
 .primary-toolbar .linked:not(.vertical):not(path-bar) > button:hover {
 
   color: #202020;
-  border-radius: 5px;
+  border-radius: 6px;
   border-right-color: rgba(0,0,0,0.12);
   border-left-color: rgba(0,0,0,0.12);
   border-bottom-color: rgba(0, 0, 0, 0.2);
@@ -3256,22 +3263,22 @@ primary-toolbar .linked:not(.vertical):not(.path-bar) > entry.warning + entry.er
 
   border-top-right-radius:0px;
   border-bottom-right-radius:0px;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
   margin-left: 0px;
   border-style: solid;}
 
 .primary-toolbar .linked:not(.vertical):not(path-bar) > button:only-child {
 
-  border-radius: 5px;
+  border-radius: 6px;
   border-style: solid;}
 
 .primary-toolbar .linked:not(.vertical):not(path-bar) > button:last-child {
 
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
   margin-left: 0px;
   border-style: solid;}
 
@@ -3339,8 +3346,8 @@ box-shadow: inset 1px 0 rgba(105, 105, 105, 0.1), inset -1px 0 rgba(105, 105, 10
 
   border-top-right-radius:0px;
   border-bottom-right-radius:0px;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
   margin-left: 0px;
   border-style: solid;}
 
@@ -3348,8 +3355,8 @@ box-shadow: inset 1px 0 rgba(105, 105, 105, 0.1), inset -1px 0 rgba(105, 105, 10
 
   border-top-right-radius:0px;
   border-bottom-right-radius:0px;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
   margin-left: 0px;
   border-style: solid;}
 
@@ -3357,8 +3364,8 @@ box-shadow: inset 1px 0 rgba(105, 105, 105, 0.1), inset -1px 0 rgba(105, 105, 10
 
   border-top-right-radius:0px;
   border-bottom-right-radius:0px;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
   margin-left: 0px;
   border-style: solid;}
 
@@ -3366,8 +3373,8 @@ box-shadow: inset 1px 0 rgba(105, 105, 105, 0.1), inset -1px 0 rgba(105, 105, 10
 
   border-top-right-radius:0px;
   border-bottom-right-radius:0px;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
   margin-left: 0px;
   border-style: solid;}
 
@@ -3375,14 +3382,14 @@ box-shadow: inset 1px 0 rgba(105, 105, 105, 0.1), inset -1px 0 rgba(105, 105, 10
 
   border-top-right-radius:0px;
   border-bottom-right-radius:0px;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
   margin-left: 0px;
   border-style: solid;}
 
 .primary-toolbar .linked:not(.vertical):not(.path-bar).stack-switcher > button:only-child{
 
-  border-radius: 5px;
+  border-radius: 6px;
   border-color: transparent;
   background-color: transparent;
   background-image: none;
@@ -3775,69 +3782,69 @@ primary-toolbar spinbutton:not(.vertical) > button:not(:disabled):not(:active):n
 
   border-bottom-right-radius:0px;
   border-top-right-radius:0px;
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px; }
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px; }
 
 .primary-toolbar combobox > .linked > button.combo:dir(ltr):hover{
 
   border-bottom-right-radius:0px;
   border-top-right-radius:0px;
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px; }
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px; }
 
 .primary-toolbar combobox > .linked > button.combo:dir(ltr):active{
 
   border-bottom-right-radius:0px;
   border-top-right-radius:0px;
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px; }
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px; }
 
 .primary-toolbar combobox > .linked > button.combo:dir(ltr):checked{
 
   border-bottom-right-radius:0px;
   border-top-right-radius:0px;
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px; }
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px; }
 
 .primary-toolbar combobox > .linked > button.combo:dir(ltr):disabled{
 
   border-bottom-right-radius:0px;
   border-top-right-radius:0px;
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px; }
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px; }
 
 .primary-toolbar combobox > .linked > button.combo:dir(rtl){
 
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px; }
 
 .primary-toolbar combobox > .linked > button.combo:dir(rtl):hover{
 
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;}
 
 .primary-toolbar combobox > .linked > button.combo:dir(rtl):active{
 
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;}
 
 .primary-toolbar combobox > .linked > button.combo:dir(rtl):checked{
 
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;}
 
 .primary-toolbar combobox > .linked > button.combo:dir(rtl):disabled{ 
 
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;}
 
@@ -4047,7 +4054,7 @@ inline-toolbar {
   border-color: rgba(105, 105, 105, 0.3);
   border-width: 0 1px 1px;
   padding: 3px;
-  border-radius: 0  0 3px 3px; }
+  border-radius: 0  0 6px 6px; }
 
 .inline-toolbar separator {
 
@@ -4083,8 +4090,8 @@ inline-toolbar {
 
   border-top-right-radius:0px;
   border-bottom-right-radius:0px;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
   margin-left: 0px;
   border-style: solid;}
 
@@ -4092,14 +4099,14 @@ inline-toolbar {
 
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
   border-style: solid;
   margin-left:-1px;}
 
 .inline-toolbar button:only-child{
 
-  border-radius: 5px;
+  border-radius: 6px;
   border-style: solid;}
 
 .inline-toolbar:not(.inline-toolbar) switch{
@@ -4137,7 +4144,7 @@ inline-toolbar {
 
   padding: 7px;
   border: 1px solid rgba(0, 0, 0, 0.5);
-  border-radius: 3px;
+  border-radius: 8px;
   background-color: rgba(53, 57, 69, 0.85); }
 
 
@@ -4267,15 +4274,15 @@ inline-toolbar {
 
 .inline-toolbar toolbutton > button.sidebar-button{
 
-  border-radius: 3px;
+  border-radius: 6px;
   box-shadow: none; } 
 
 .inline-toolbar toolbutton:first-child > button.flat{
 
   border-top-right-radius:0px;
   border-bottom-right-radius:0px;
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
   margin-left: 0px;
   border-style: solid;}
 
@@ -4283,8 +4290,8 @@ inline-toolbar {
 
   border-top-right-radius:0px;
   border-bottom-right-radius:0px;
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
   margin-left: 0px;
   border-style: solid;}
 
@@ -4292,8 +4299,8 @@ inline-toolbar {
 
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
   border-style: solid;
   margin-left:-1px;}
 
@@ -4301,19 +4308,19 @@ inline-toolbar {
 
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
   border-style: solid;
   margin-left:-1px;}
 
 .inline-toolbar toolbutton:only-child > button.flat{
 
-  border-radius: 3px;
+  border-radius: 6px;
   border-style: solid;}
 
 .inline-toolbar toolbutton:only-child > button.sidebar-button{
 
-  border-radius: 3px;
+  border-radius: 6px;
   border-style: solid;}
 
 /******TOOLBAR INLINE-TOOLBAR ***/
@@ -4333,8 +4340,8 @@ toolbar.inline-toolbar toolbutton:first-child > button.flat{
 
   border-top-right-radius:0px;
   border-bottom-right-radius:0px;
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
   margin-left: 0px;
   border-style: solid;}
 
@@ -4342,8 +4349,8 @@ toolbar.inline-toolbar toolbutton:backdrop:first-child > button.flat{
 
   border-top-right-radius:0px;
   border-bottom-right-radius:0px;
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
   margin-left: 0px;
   border-style: solid;}
 
@@ -4351,8 +4358,8 @@ toolbar.inline-toolbar toolbutton:first-child > button.sidebar-button{
 
   border-top-right-radius:0px;
   border-bottom-right-radius:0px;
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
   margin-left: 0px;
   border-style: solid;}
 
@@ -4360,8 +4367,8 @@ toolbar.inline-toolbar toolbutton:last-child > button.flat{
 
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
   border-style: solid;
   margin-left:-1px;}
 
@@ -4369,8 +4376,8 @@ toolbar.inline-toolbar toolbutton:last-child > button.sidebar-button{
 
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius:3px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius:6px;
   border-style: solid;
   margin-left:-1px;}
 
@@ -4378,24 +4385,24 @@ toolbar.inline-toolbar toolbutton:backdrop:last-child > button.flat{
 
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
   border-style: solid;
   margin-left:-1px;}
 
 toolbar.inline-toolbar toolbutton:only-child > button.flat{
 
-  border-radius: 3px;
+  border-radius: 6px;
   border-style: solid;}
 
 toolbar.inline-toolbar toolbutton:only-child > button.sidebar-button{
 
-  border-radius: 3px;
+  border-radius: 6px;
   border-style: solid;}
 
 toolbar.inline-toolbar toolbutton:backdrop:only-child > button.flat{
 
-  border-radius: 3px;
+  border-radius: 6px;
   border-style: solid;}
 
 
@@ -4489,23 +4496,23 @@ toolbar.inline-toolbar toolbutton:backdrop:only-child > button.flat{
 
   border-top-right-radius:0px;
   border-bottom-right-radius:0px;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
   margin-left: 0px;
   border-style: solid;
   border-right-style: none;}
 
 .linked:not(.vertical).path-bar > button:only-child {
 
-  border-radius: 5px;
+  border-radius: 6px;
   border-style: solid;}
 
 .linked:not(.vertical).path-bar > button:last-child {
 
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
   margin-left: 0px;
   border-style: solid;}
 
@@ -4551,8 +4558,8 @@ toolbar.inline-toolbar toolbutton:backdrop:only-child > button.flat{
 
   border-top-right-radius:0px;
   border-bottom-right-radius:0px;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
   margin-left: 0px;
   border-style: solid;}
 
@@ -4560,14 +4567,14 @@ toolbar.inline-toolbar toolbutton:backdrop:only-child > button.flat{
 
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
   border-style: solid;
   margin-left:-1px;}
 
 .linked:not(.vertical) > entry:only-child{
 
-  border-radius: 5px;
+  border-radius: 6px;
   border-style: solid;}
 
 .linked:not(.vertical):not(.path-bar) > entry + entry {
@@ -4704,8 +4711,8 @@ toolbar.inline-toolbar toolbutton:backdrop:only-child > button.flat{
 
   border-top-right-radius:0px;
   border-bottom-right-radius:0px;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
   margin-left: 0px;
   border-style: solid;}
  
@@ -4713,22 +4720,22 @@ toolbar.inline-toolbar toolbutton:backdrop:only-child > button.flat{
 
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
   border-style: solid;
   margin-left:-1px;}
 
 .linked:not(.vertical) > button:only-child{
 
-  border-radius: 5px;
+  border-radius: 6px;
   border-style: solid;}
 
 .linked:not(.vertical) > spinbutton:first-child:not(.vertical){
 
   border-top-right-radius:0px;
   border-bottom-right-radius:0px;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
   margin-left: 0px;
   border-style: solid;}
 
@@ -4819,39 +4826,39 @@ toolbar.inline-toolbar toolbutton:backdrop:only-child > button.flat{
   border-bottom-right-radius: 0px;
   border-top-right-radius: 0px;
   border-left: solid;
-  border-bottom-left-radius: 5px;
-  border-top-left-radius: 5px;}
+  border-bottom-left-radius: 6px;
+  border-top-left-radius: 6px;}
 
 .linked:not(.vertical) > combobox > box > button.combo:dir(ltr){
 
   border-bottom-right-radius: 0px;
   border-top-right-radius: 0px;
   border-left: solid;
-  border-bottom-left-radius: 5px;
-  border-top-left-radius: 5px;}
+  border-bottom-left-radius: 6px;
+  border-top-left-radius: 6px;}
 
 .linked:not(.vertical) > combobox > box > button.combo:dir(rtl):disabled{
 
   border-bottom-left-radius:0px;
   border-top-left-radius: 0px;
   border-right-style: solid;
-  border-bottom-right-radius: 5px;
-  border-top-right-radius: 5px;}
+  border-bottom-right-radius: 6px;
+  border-top-right-radius: 6px;}
 
 .linked:not(.vertical) > combobox > box > button.combo:dir(rtl) {
   
   border-bottom-left-radius:0px;
   border-top-left-radius: 0px;
   border-right-style: solid;
-  border-bottom-right-radius: 5px;
-  border-top-right-radius: 5px;}
+  border-bottom-right-radius: 6px;
+  border-top-right-radius: 6px;}
 
 .linked:not(.vertical) > combobox:first-child > box > button.combo{
 
   border-top-right-radius:0px;
   border-bottom-right-radius:0px;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
   margin-left: 0px;
   border-style: solid;}
 
@@ -4859,14 +4866,14 @@ toolbar.inline-toolbar toolbutton:backdrop:only-child > button.flat{
 
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
   border-style: solid;
   margin-left:-1px;}
 
 .linked:not(.vertical) > combobox:only-child > box > button.combo{
 
-  border-radius: 5px;}
+  border-radius: 6px;}
 
 /******************************************************/
 /* LINKED.VERTICAL                                    */
@@ -4888,20 +4895,20 @@ toolbar.inline-toolbar toolbutton:backdrop:only-child > button.flat{
 
   border-bottom-left-radius:0px;
   border-bottom-right-radius:0px;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px; }
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px; }
 
 .linked.vertical > entry:last-child{
 
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
   border-bottom-style: solid; }
 
 .linked.vertical > entry:only-child{
 
-  border-radius: 5px;
+  border-radius: 6px;
   border-style: solid; }
 
 .linked.vertical > entry + entry {
@@ -5047,20 +5054,20 @@ toolbar.inline-toolbar toolbutton:backdrop:only-child > button.flat{
 
   border-bottom-right-radius:0px;
   border-bottom-left-radius:0px;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px; }
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px; }
 
 .linked.vertical > button:last-child{
 
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
   border-bottom-style: solid; }
 
 .linked.vertical > button:only-child{
 
-  border-radius: 5px;
+  border-radius: 6px;
   border-style: solid; }
 
 .linked.vertical > button:active + entry{
@@ -5146,20 +5153,20 @@ toolbar.inline-toolbar toolbutton:backdrop:only-child > button.flat{
 
   border-bottom-right-radius:0px;
   border-bottom-left-radius:0px;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px; }
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px; }
 
 .linked.vertical > combobox:last-child > box > button.combo {
 
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
   border-bottom-style: solid; }
 
 .linked.vertical > combobox:only-child > box > button.combo {
 
-  border-radius: 5px;
+  border-radius: 6px;
   border-style: solid; }
 
 /******************************************************/
@@ -5188,8 +5195,8 @@ spinbutton:not(.vertical) entry:first-child{
 
   border-top-right-radius:0px;
   border-bottom-right-radius:0px;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
   margin-left: 0px;
   border-style: solid;}
 
@@ -5197,19 +5204,19 @@ spinbutton:not(.vertical) entry:last-child{
 
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
   border-style: solid;
   margin-left:-1px;}
 
 spinbutton:not(.vertical) entry:only-child{
 
-  border-radius: 5px;
+  border-radius: 6px;
   border-style: solid;}
 
 spinbutton:not(.vertical):dir(ltr) entry{
 
-  border-radius: 5px 0 0 5px; }
+  border-radius: 6px 0 0 6px; }
 
 spinbutton:not(.vertical) > entry + button:not(:active):hover {
 
@@ -5246,28 +5253,28 @@ spinbutton:not(.vertical) button:last-child{
 
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
   border-style: solid;
   margin-left:-1px;}
 
 spinbutton:not(.vertical) button:only-child{
 
-  border-radius: 5px;
+  border-radius: 6px;
   border-style: solid;}
 
 spinbutton:not(.vertical) button:first-child{
 
   border-top-right-radius:0px;
   border-bottom-right-radius:0px;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
   margin-left: 0px;
   border-style: solid;}
 
 spinbutton:not(.vertical):dir(rtl) button.up {
 
-  border-radius: 5px 0 0 5px; }
+  border-radius: 6px 0 0 6px; }
 
 spinbutton:not(.vertical) > button + button {
 
@@ -5313,20 +5320,20 @@ spinbutton.vertical entry:first-child {
 
   border-bottom-right-radius:0px;
   border-bottom-left-radius:0px;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px; }
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px; }
 
 spinbutton.vertical entry:last-child {
 
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
   border-bottom-style: solid; }
 
 spinbutton.vertical entry:only-child {
 
-  border-radius: 5px;
+  border-radius: 6px;
   border-style: solid; }
 
 spinbutton.vertical > entry:focus + button {
@@ -5351,20 +5358,20 @@ spinbutton.vertical button:first-child{
 
   border-bottom-right-radius:0px;
   border-bottom-left-radius:0px;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px; }
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px; }
 
 spinbutton.vertical button:last-child {
 
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
   border-bottom-style: solid; }
 
 spinbutton.vertical button:only-child {
 
-  border-radius: 5px;
+  border-radius: 6px;
   border-style: solid; }
 
 /******************************************************/
@@ -5376,7 +5383,7 @@ spinbutton.vertical button:only-child {
 headerbar entry {
 
   color: #202020;
-  border-radius: 5px;
+  border-radius: 6px;
   border-color: rgba(105, 105, 105, 0.5);
   background-color: rgba(255, 255, 255,1);
   min-height: 16px;
@@ -5517,7 +5524,7 @@ headerbar button {
   background-image: linear-gradient(to bottom, rgba(255,255,255,1),
                                              rgba(228,233,239,1));
   font-weight: normal;
-  border-radius: 5px;
+  border-radius: 6px;
   min-height: 16px;
   min-width: 16px;
   padding-left: 6px;
@@ -5690,7 +5697,7 @@ headerbar button.text-button {
   background-color: transparent; 
   background-image: linear-gradient(to bottom, rgba(255,255,255,1),
                                              rgba(228,233,239,1));
-  border-radius: 5px;
+  border-radius: 6px;
   min-height: 16px;
   min-width: 16px;
   padding-left: 6px;
@@ -5758,7 +5765,7 @@ headerbar button.text-button.image-button{
   background-color: transparent; 
   background-image: linear-gradient(to bottom, rgba(255,255,255,1),
                                              rgba(228,233,239,1));
-  border-radius: 5px;
+  border-radius: 6px;
   min-height: 16px;
   min-width: 16px;
   padding-left: 6px;
@@ -6140,8 +6147,8 @@ headerbar .linked:not(.vertical).path-bar > button:first-child{
   border-right: none;
   border-top-right-radius:0px;
   border-bottom-right-radius:0px;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
  
   
   border-style: solid;}
@@ -6150,8 +6157,8 @@ headerbar .linked:not(.vertical).path-bar > button:last-child{
   border-left: none;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
   
   border-style: solid;
  }
@@ -6159,7 +6166,7 @@ headerbar .linked:not(.vertical).path-bar > button:last-child{
 headerbar .linked:not(.vertical).path-bar > button:only-child {
 
 
-  border-radius: 5px;
+  border-radius: 6px;
   border-style: solid;}
 
 headerbar .linked:not(.vertical).path-bar > button:hover:not(:checked):not(:active):not(:only-child):hover {
@@ -6392,8 +6399,8 @@ headerbar .linked:not(.vertical):not(.path-bar) > button:first-child{
   border-bottom-right-radius:0px;
   padding-left: 4px;
   padding-right: 6px;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;} 
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;} 
 
 headerbar .linked:not(.vertical):not(.path-bar) > button:first-child:hover{
 
@@ -6448,8 +6455,8 @@ headerbar .linked:not(.vertical):not(.path-bar) > button:last-child{
   border-bottom-left-radius: 0px;
   padding-left: 6px;
   padding-right: 4px;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
  
   border: 1px solid;
   color: #202020;
@@ -6628,8 +6635,8 @@ headerbar .linked:not(.vertical):not(.path-bar).stack-switcher > button:first-ch
 
   border-top-right-radius:0px;
   border-bottom-right-radius:0px;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
   margin-left: 0px;
   padding-left: 0px;
   padding-right: 0px;
@@ -6637,15 +6644,15 @@ headerbar .linked:not(.vertical):not(.path-bar).stack-switcher > button:first-ch
 
 headerbar .linked:not(.vertical):not(.path-bar).stack-switcher > button:only-child{
 
-  border-radius: 5px;
+  border-radius: 6px;
   border-style: solid;}
 
 headerbar .linked:not(.vertical):not(.path-bar).stack-switcher > button:last-child{
 
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
   border-style: solid;
   margin-right: 0px;}
 
@@ -6749,7 +6756,7 @@ headerbar spinbutton:not(.vertical) > entry:focus + button {
 
 headerbar combobox {
 
- border-radius: 5px;
+ border-radius: 6px;
  /*color: rgba(255,255,255,0.9);
   text-shadow:  0 -1px alpha(#202020, 1),
 				 -1px  0px alpha(#202020, 0.10),
@@ -6829,69 +6836,69 @@ headerbar combobox > .linked > button.combo:dir(ltr){
 
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px; }
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px; }
 
 headerbar combobox > .linked > button.combo:dir(ltr):hover{
 
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px; }
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px; }
 
 headerbar combobox > .linked > button.combo:dir(ltr):active{
 
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px; }
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px; }
 
 headerbar combobox > .linked > button.combo:dir(ltr):checked{
 
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px; }
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px; }
 
 headerbar combobox > .linked > button.combo:dir(ltr):disabled {
 
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px; }
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px; }
 
 headerbar combobox > .linked > button.combo:dir(rtl){
 
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;}
 
 headerbar combobox > .linked > button.combo:dir(rtl):hover{
 
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;}
 
 headerbar combobox > .linked > button.combo:dir(rtl):active{
 
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;}
 
 headerbar combobox > .linked > button.combo:dir(rtl):checked{
 
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;}
 
 headerbar combobox > .linked > button.combo:dir(rtl):disabled {
 
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;}
 
@@ -7518,7 +7525,7 @@ notebook > header.top > tabs > tab {
   min-height: 20px;
   border: 1px solid transparent;
   border-bottom: none;
-  border-radius: 1px 1px 0 0; }
+  border-radius: 6px 6px 0 0; }
 
 notebook > header.top > tabs > tab + tab {
 
@@ -7535,7 +7542,7 @@ notebook > header.bottom > tabs > tab {
   min-height: 20px;
   border: 1px solid transparent;
   border-top: none;
-  border-radius: 0 0 1px 1px; }
+  border-radius: 0 0 6px 6px; }
 
 notebook > header.bottom > tabs > tab + tab {
 
@@ -7552,7 +7559,7 @@ notebook > header.right > tabs > tab {
   min-height: 20px;
   border: 1px solid transparent;
   border-left: none;
-  border-radius: 0 1px 1px 0; }
+  border-radius: 0 6px 6px 0; }
 
 notebook > header.right > tabs > tab + tab {
 
@@ -7569,7 +7576,7 @@ notebook > header.left > tabs > tab {
   min-height: 20px;
   border: 1px solid transparent;
   border-right: none;
-  border-radius: 1px 0 0 1px; }
+  border-radius: 6px 0 0 6px; }
 
 notebook > header.left > tabs > tab + tab {
 
@@ -7824,7 +7831,7 @@ menuitem.button.flat {
   min-height: 24px;
   padding-left: 8px;
   padding-right: 8px;
-  border-radius: 2px; }
+  border-radius: 6px; }
 
 menuitem.button.flat:hover {
   color: #ffffff;
@@ -8810,13 +8817,13 @@ progressbar {
 progressbar progress {
   background-color: @accent_bg_color;
   border: none;
-  border-radius: 3px;
+  border-radius: 6px;
   box-shadow: none; }
 
 progressbar trough {
 
   border: none;
-  border-radius: 3px;
+  border-radius: 6px;
   background-color: #656565; }
 
 /******************************************************************/
@@ -8837,7 +8844,7 @@ levelbar trough {
 
   border: none;
   padding: 3px;
-  border-radius: 5px;
+  border-radius: 6px;
   background-color: #656565; }
 
 levelbar.horizontal.discrete block {
@@ -8852,7 +8859,7 @@ levelbar block:not(.empty) {
 
   border: 1px solid @accent_bg_color;
   background-color: @accent_bg_color;
-  border-radius: 2px; }
+  border-radius: 6px; }
 
 levelbar block.low {
   border-color: #F27835;
@@ -9326,7 +9333,7 @@ row:selected progressbar trough{
   background-color: transparent;
   background-image:linear-gradient(to bottom left,rgba(242,243,246,0.92),rgba(213,218,224,0.92),rgba(213,218,224,0.92));
   border: 1px solid rgba(105, 105, 105, 0.3);
-  border-radius: 0 0 5px 5px; }
+  border-radius: 0 0 8px 8px; }
 
 .app-notification border {
  
@@ -9339,7 +9346,7 @@ row:selected progressbar trough{
   transition: all 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
   font-weight: normal;
   border: 1px solid;
-  border-radius: 5px;
+  border-radius: 8px;
   padding-left: 5px;
   padding-right: 5px;
   padding-top:2px;
@@ -9470,14 +9477,14 @@ calendar {
 
   color: #202020;
   border: 1px solid rgba(105, 105, 105, 0.3);
-  border-radius: 5px;
+  border-radius: 6px;
   padding: 2px; }
 
 calendar:selected {
 
   color: #ffffff;
   background-color: @accent_bg_color;
-  border-radius: 1.5px; }
+  border-radius: 6px; }
 
 calendar.header {
 
@@ -9547,14 +9554,14 @@ messagedialog .titlebar {
 
 messagedialog.csd.background {
 
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
   border: none; }
 
 messagedialog.csd .dialog-action-area button {
 
   margin:10px;
-  border-radius: 5px; }
+  border-radius: 8px; }
 
 /*messagedialog.csd .dialog-action-area button {
 
@@ -9567,7 +9574,7 @@ messagedialog.csd .dialog-action-area button:last-child {
   padding-left: 6px;
   padding-right:6px;
   margin:10px;
-  border-radius: 5px; }
+  border-radius: 8px; }
 
 messagedialog.csd .dialog-action-area button:first-child {
 padding-top:1px;
@@ -9575,7 +9582,7 @@ padding-top:1px;
  padding-left:6px;
   padding-right: 6px;
   margin: 10px;
-  border-radius: 5px; }
+  border-radius: 8px; }
 
 messagedialog.csd .dialog-action-area button:only-child {
 padding-top:1px;
@@ -9583,7 +9590,7 @@ padding-top:1px;
   padding-left: 6px;
   padding-right: 6px;
   margin: 10px;
-  border-radius:5px; }
+  border-radius:8px; }
 
 /*********************************************************************/
 /*             SIDEBAR                                               */
@@ -9886,7 +9893,7 @@ paned.vertical > separator.wide {
 
 tooltip {
 
-  border-radius: 5px;
+  border-radius: 6px;
   
   text-shadow:  none;}
 tooltip.background {
@@ -9921,51 +9928,51 @@ colorswatch, colorswatch:drop(active) {
 
 colorswatch.top {
 
-  border-top-left-radius: 2.5px;
-  border-top-right-radius: 2.5px; }
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px; }
 
 colorswatch.top overlay {
 
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px; }
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px; }
 
 colorswatch.bottom {
 
-  border-bottom-left-radius: 2.5px;
-  border-bottom-right-radius: 2.5px; }
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px; }
 
 colorswatch.bottom overlay {
 
-  border-bottom-left-radius: 2px;
-  border-bottom-right-radius: 2px; }
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px; }
 
 colorswatch.left, colorswatch:first-child:not(.top) {
 
   border-top-right-radius:0px;
   border-bottom-right-radius:0px;
-  border-top-left-radius: 2.5px;
-  border-bottom-left-radius: 2.5px; }
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px; }
 
 colorswatch.left overlay, colorswatch:first-child:not(.top) overlay {
 
   border-top-right-radius:0px;
   border-bottom-right-radius:0px;
-  border-top-left-radius: 2px;
-  border-bottom-left-radius: 2px; }
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px; }
 
 colorswatch.right, colorswatch:last-child:not(.bottom) {
 
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
-  border-top-right-radius: 2.5px;
-  border-bottom-right-radius: 2.5px; }
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px; }
 
 colorswatch.right overlay, colorswatch:last-child:not(.bottom) overlay {
 
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px; }
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px; }
 
 colorswatch.dark overlay {
 
@@ -10086,7 +10093,7 @@ button.circular-button label {
   color: #202020;
   background-color: #ffffff;
   border: 1px solid rgba(105, 105, 105, 0.3);
-  border-radius: 2.5px;
+  border-radius: 6px;
   box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.05); }
 
 /*********************************************************************/
@@ -10146,7 +10153,7 @@ button.circular-button label {
   background-color: #f6f8fa;
   padding: 6px;
   border-color: rgba(105, 105, 105, 0.3);
-  border-radius: 0 0 2px 2px;
+  border-radius: 0 0 6px 6px;
   border-width: 0 1px 1px 1px;
   border-style: solid; }
 
@@ -10327,15 +10334,15 @@ workbench.csd > stack.titlebar:not(headerbar) {
 
 workbench.csd > stack.titlebar:not(headerbar) headerbar{
 
-  border-radius: 4px 4px 0 0; }
+  border-radius: 6px 6px 0 0; }
 
 workbench.csd > stack.titlebar:not(headerbar) headerbar:first-child{
 
-  border-radius: 4px 4px 0 0; }
+  border-radius: 6px 6px 0 0; }
 
 workbench.csd > stack.titlebar:not(headerbar) headerbar:last-child {
 
-  border-radius: 4px 4px 0 0; }
+  border-radius: 6px 6px 0 0; }
 
 /*********************************************************************/
 /*            LAYOUT                                                 */
@@ -10466,12 +10473,12 @@ button.documents-load-more {
 
   background-color: @accent_bg_color;
   color: #ffffff;
-  border-radius: 2px; }
+  border-radius: 6px; }
 
 .documents-collection-icon{
 
   background-color: rgba(37, 37, 37, 0.3);
-  border-radius: 2px; }
+  border-radius: 6px; }
 
 button.documents-favorite:active,
 button.documents-favorite:active:hover {
@@ -10482,7 +10489,7 @@ button.documents-favorite:active:hover {
 
    color: #ffffff;
   background: @accent_bg_color;
-  border-radius: 2px;
+  border-radius: 6px;
   border-width: 0;
   margin: 2px;
   padding: 4px; }
@@ -10510,13 +10517,13 @@ button.documents-favorite:active:hover {
 .photos-collection-icon {
 
   background-color: rgba(37, 37, 37, 0.3);
-  border-radius: 2px; }
+  border-radius: 6px; }
 
 .photos-entry-tag {
 
   color: #ffffff;
   background: @accent_bg_color;
-  border-radius: 2px;
+  border-radius: 6px;
   border-width: 0;
   margin: 2px;
   padding: 4px; }
@@ -10591,7 +10598,7 @@ color: white;}
   color: #cfd5de;
   background-color: rgba(53, 57, 69, 0.95);
   border: 1px solid rgba(35, 38, 46, 0.95);
-  border-radius: 2px; }
+  border-radius: 6px; }
 
 #gf-bubble levelbar block.low, #gf-bubble levelbar block.high, #gf-bubble levelbar block.full,
 #gf-osd-window levelbar block.low,
@@ -10624,7 +10631,7 @@ color: white;}
   #gf-input-source:selected {
     color: #ffffff;
     background-color: @accent_bg_color;
-    border-radius: 2px; }
+    border-radius: 6px; }
 
 gf-candidate-box label {
 
@@ -10634,7 +10641,7 @@ gf-candidate-box:hover, gf-candidate-box:selected {
 
   color: #ffffff;
   background-color: @accent_bg_color;
-  border-radius: 2px; }
+  border-radius: 6px; }
 
 /*********************************************************************/
 /*            TASKLIST                                               */
@@ -10660,7 +10667,7 @@ gf-candidate-box:hover, gf-candidate-box:selected {
 
 MsdOsdWindow.background.osd {
 
-  border-radius: 2px;
+  border-radius: 8px;
   border: 1px solid rgba(35, 38, 46, 0.95); }
 
 MsdOsdWindow.background.osd .progressbar {
@@ -10668,13 +10675,13 @@ MsdOsdWindow.background.osd .progressbar {
   background-color: @accent_bg_color;
   border: none;
   border-color: red;
-  border-radius: 5px; }
+  border-radius: 8px; }
 
 MsdOsdWindow.background.osd .trough {
 
   background-color: rgba(42, 45, 55, 0.95);
   border: none;
-  border-radius: 5px; }
+  border-radius: 8px; }
 
 /*********************************************************************/
 /*            PANEL                                                  */
@@ -10775,7 +10782,7 @@ MsdOsdWindow.background.osd .trough {
   background-image: none;
   background-color: rgba(0, 0, 0, 0.4);
   border-color: rgba(255, 255, 255, 0.8);
-  border-radius: 4px;
+  border-radius: 8px;
   padding: 1px;
   color: white; }
 
@@ -10920,7 +10927,7 @@ MsdOsdWindow.background.osd .trough {
 
   background-color: @accent_bg_color;
   border-color: @accent_bg_color;
-  border-radius: 2px;
+  border-radius: 6px;
   padding: 3px 6px;
   margin: 3px; }
 
@@ -10963,7 +10970,7 @@ GraniteWidgetsPopOver {
 
   -GraniteWidgetsPopOver-arrow-width: 21;
   -GraniteWidgetsPopOver-arrow-height: 10;
-  -GraniteWidgetsPopOver-border-radius: 2px;
+  -GraniteWidgetsPopOver-border-radius: 6px;
   -GraniteWidgetsPopOver-border-width: 1;
   -GraniteWidgetsPopOver-shadow-size: 12;
   border: 1px solid rgba(0, 0, 0, 0.3);
@@ -11076,7 +11083,7 @@ GtkListBox .h4 {
 #user_image {
 
   padding: 3px;
-  border-radius: 2px; }
+  border-radius: 6px; }
 
 #shutdown_dialog{
 
@@ -11162,8 +11169,8 @@ GtkListBox .h4 {
 
   padding-bottom: 14px;
   background-color: #ebf0f4;
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
   border: solid rgba(0, 0, 0, 0.1);
   border-width: 1px 1px 0 1px; }
 
@@ -11224,8 +11231,8 @@ GtkListBox .h4 {
   padding-bottom: 0px;
   border-style: none;
   background-color: rgba(53, 57, 69, 0.95);
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
   border: solid rgba(0, 0, 0, 0.1);
   border-width: 0 1px 1px 1px;
   box-shadow: inset 0 1px rgba(53, 57, 69, 0.95); }
@@ -11771,7 +11778,7 @@ headerbar{
 
   background-color: #e7e8eb;
   border-color: #d4d5db;
-  border-radius: 1px; }
+  border-radius: 0; }
 
 headerbar:backdrop{
 
@@ -11780,7 +11787,7 @@ headerbar:backdrop{
 
 .maximized headerbar:backdrop{
 
-  border-radius: 1px; }
+  border-radius: 0; }
 
 
 headerbar .title{
@@ -11867,7 +11874,7 @@ headerbar.default-decoration,
 .maximized.default-decoration.titlebar:backdrop:not(headerbar),
 .maximized.csd .default-decoration.titlebar:backdrop:not(headerbar) {
 
-  border-radius: 1px;
+  border-radius: 0;
   background-color: transparent;
   background-image: linear-gradient(to bottom, #ced2d9, #b5b8be);}
 
@@ -11880,7 +11887,7 @@ headerbar separator {
 
 headerbar:first-child{
 
-  border-top-left-radius: 5px; }
+  border-top-left-radius: 6px; }
 
 .maximized headerbar:first-child{
 
@@ -11888,11 +11895,11 @@ headerbar:first-child{
 
 headerbar:first-child:backdrop {
 
-  border-top-left-radius: 5px; }
+  border-top-left-radius: 6px; }
  
 headerbar:last-child{
 
-  border-top-right-radius: 5px; }
+  border-top-right-radius: 6px; }
 
 .maximized headerbar:last-child{
 
@@ -11900,7 +11907,7 @@ headerbar:last-child{
 
 headerbar:last-child:backdrop {
 
-  border-top-right-radius: 5px; }
+  border-top-right-radius: 6px; }
 
 .maximized headerbar:last-child:backdrop{
 
@@ -11908,8 +11915,8 @@ headerbar:last-child:backdrop {
  
 headerbar:only-child{
 
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;}
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;}
 
 headerbar separator.titlebutton{
 
@@ -12151,15 +12158,15 @@ window > .titlebar:not(headerbar):backdrop{
 
 .titlebar {
 
-  border-radius: 6px 6px 0 0; }
+  border-radius: 10px 10px 0 0; }
 
 .maximized .titlebar:not(headerbar) {
 
-  border-radius: 1px; }
+  border-radius: 0; }
 
 .maximized .titlebar:backdrop:not(headerbar) {
 
-  border-radius: 1px;}
+  border-radius: 0;}
 
 .titlebar:backdrop:not(headerbar) {
 
@@ -12260,11 +12267,11 @@ window > .titlebar:not(headerbar):backdrop{
 
 separator:first-child + headerbar{
 
-  border-top-left-radius: 5px; }
+  border-top-left-radius: 6px; }
 
 separator:first-child + headerbar:backdrop{
 
-  border-top-left-radius: 5px; }
+  border-top-left-radius: 6px; }
 
 .maximized separator:first-child + headerbar{
 
@@ -12282,19 +12289,19 @@ separator:first-child + headerbar:backdrop{
 
 .tiled headerbar{
 
-  border-radius: 1px; }
+  border-radius: 0; }
 
 .tiled headerbar:backdrop{
 
-  border-radius: 1px; }
+  border-radius: 0; }
 
 .tiled .titlebar:not(headerbar){
 
-  border-radius: 1px; }
+  border-radius: 0; }
 
 .tiled .titlebar:backdrop:not(headerbar){
 
-  border-radius: 1px; }
+  border-radius: 0; }
 
 .tiled separator:first-child + headerbar:backdrop{
 
@@ -12493,7 +12500,7 @@ headerbar button.titlebutton.restore:active,
 				  1px  0px alpha(#202020, 0.05),
 				  0px  1px alpha(#202020, 0.3),
 				  0px  2px alpha(#202020, 0.05);
-  border-radius: 2px 2px 0 0; }
+  border-radius: 6px 6px 0 0; }
 
 .nautilus-window .floating-bar button {
 
@@ -12846,7 +12853,7 @@ placessidebar.sidebar row.sidebar-row:selected:hover .sidebar-icon {
 
 decoration {
 
-  border-radius: 6px 6px 0 0;
+  border-radius: 10px 10px 0 0;
   border-width: 0px;
   box-shadow: 1px 7px 7px 7px rgba(0, 0, 0, 0.26);
  /*box-shadow: 1px 14px 14px 14px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(0, 0, 0, 0.18);*/
@@ -12854,7 +12861,7 @@ decoration {
 
 decoration:backdrop{
 
-  border-radius: 6px 6px 0 0;
+  border-radius: 10px 10px 0 0;
   border-width: 0px;
   box-shadow: 1px 7px 7px 7px rgba(0, 0, 0, 0.26);
 /*  box-shadow: 1px 14px 14px 14px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(0, 0, 0, 0.18);*/
@@ -12869,7 +12876,7 @@ decoration:backdrop{
 
 .popup decoration {
  box-shadow: 1px 7px 7px 7px rgba(0, 0, 0, 0.26);
-  border-radius: 5px;} 
+  border-radius: 6px;} 
 
 .ssd decoration {
   margin: 0px;
@@ -12891,11 +12898,11 @@ decoration:backdrop{
 tooltip.csd decoration {
 
   box-shadow: 1px 6px 6px 6px rgba(0, 0, 0, 0.26),0 0 0 1px rgba(0, 0, 0, 0.18);
-  border-radius: 5px;} 
+  border-radius: 6px;} 
 
 messagedialog.csd decoration {
 
-  border-radius: 4px;
+  border-radius: 8px;
   box-shadow: 0 8px 8px rgba(0, 0, 0, 0.26),0 0 0 1px rgba(0, 0, 0, 0.18);}
 
 .solid-csd decoration {
@@ -12936,7 +12943,7 @@ box-shadow: 0 6px 6px rgba(0, 0, 0, 0.26);}
 
 .nautilus-canvas-item {
 
-  border-radius: 2px; }
+  border-radius: 6px; }
 
 .nautilus-canvas-item.dim-label{
 
@@ -12991,11 +12998,11 @@ scale.fine-tune fill,
 scale.fine-tune highlight,
 scale.fine-tune trough {
 
-  border-radius: 5px;}
+  border-radius: 6px;}
 
 scale trough {
   
-  border-radius: 1.5px; 
+  border-radius: 6px; 
   background-color: rgba(100,103,114,0.3); }
 
 scale trough:disabled {
@@ -13004,7 +13011,7 @@ scale trough:disabled {
 
 scale fill {
 
-  border-radius: 1.5px;
+  border-radius: 6px;
   background-color: rgba(82, 148, 226, 0.5); }
   
 scale fill:disabled {
@@ -13019,7 +13026,7 @@ scale slider {
  
 scale highlight {
 
-  border-radius: 2.5px;
+  border-radius: 6px;
   background-color: @accent_bg_color; }
 
 scale highlight:disabled {
@@ -13180,7 +13187,7 @@ pillbox {
 
   color: #ffffff;
   background-color: @accent_bg_color;
-  border-radius: 5px; }
+  border-radius: 6px; }
 
 pillbox:disabled label {
 
@@ -13198,7 +13205,7 @@ button.run-arrow-button {
 omnibar.linked > entry:not(:only-child) {
 
   border-style: solid;
-  border-radius: 5px;
+  border-radius: 6px;
   margin-left: 1px;
   margin-right: 1px; }
 
@@ -13228,7 +13235,7 @@ configurationview list {
 
 colorchooser .popover.osd {
 
-  border-radius: 5px; }
+  border-radius: 8px; }
 
 .monospace {
 
@@ -13266,13 +13273,13 @@ checkbutton label:not(:only-child):last-child{
 /*****Whisker menu settings**********/
 
 #whiskermenu-window {
-        border-radius: 2px;
+        border-radius: 6px;
         
 	background-color: rgba(83,85,92,0.95);
 	color: #dde2e7;
 }
 #whiskermenu-window frame {
-      border-radius: 2px;
+      border-radius: 8px;
       box-shadow: 1px 7px 7px 7px rgba(0, 0, 0, 0.26);
       /*border: 3px solid black;*/ }
 
@@ -13499,7 +13506,7 @@ XfceHeading {
     background-color: #46484f;
     color: #fcfcfc;
     border-color: #fcfcfc;
-    border-radius: 3px;
+    border-radius: 6px;
 }
 
 #XfceNotifyWindow label#summary {
@@ -13508,7 +13515,7 @@ XfceHeading {
 
 #XfceNotifyWindow progressbar {
     min-height: 6px;
-    border-radius: 3px;
+    border-radius: 6px;
 }
 
 #XfceNotifyWindow progressbar progress {
@@ -13524,7 +13531,7 @@ XfceHeading {
                                       shade(#46484f, 1.25)
                                       );
     border: 1px solid shade(#46484f, 0.2);
-    border-radius: 3px;
+    border-radius: 6px;
     padding: 1px 0;
 }
 /*(((((((((((((((((  THUNAR CHANGES  ))))))))))))))))))))))))*/
@@ -13686,23 +13693,23 @@ font-style: normal;
 
   border-top-right-radius:0px;
   border-bottom-right-radius:0px;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
   margin-left: 0px;
   border-style: solid;
   border-right-style: none;}
 
 .thunar toolbar .linked:not(.vertical).path-bar > button:only-child {
 
-  border-radius: 5px;
+  border-radius: 6px;
   border-style: solid;}
 
 .thunar toolbar .linked:not(.vertical).path-bar > button:last-child {
 
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
   margin-left: 0px;
   border-style: solid;}
 
@@ -13711,7 +13718,7 @@ font-style: normal;
  color: #202020;
   min-height: 22px;
   text-shadow: none;
-  border-radius: 5px;
+  border-radius: 6px;
   border-right-color: rgba(0,0,0,0.12);
   border-left-color: rgba(0,0,0,0.12);
   border-bottom-color: rgba(0, 0, 0, 0.2);
@@ -13837,7 +13844,18 @@ window.background:not(.solid-csd) > notebook:not(.frame) > stack {
   border: none;
   box-shadow: none; }
 
+/* Menus: rounded corners (8px) except top-left, which sits under the menu
+   item or panel button. The popup window is made transparent so its square
+   background does not show behind the rounded menu (needs a compositor;
+   without one the corners render square). */
+menu,
+.menu,
+.context-menu,
+.popup decoration,
+.csd.popup decoration {
+  border-radius: 0 8px 8px 8px; }
 
-
-
-
+window.popup,
+window.popup.background {
+  background-color: transparent;
+  background-image: none; }
