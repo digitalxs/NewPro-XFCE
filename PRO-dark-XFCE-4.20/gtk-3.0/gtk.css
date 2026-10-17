@@ -23,6 +23,7 @@
    small  — buttons, entries, spin/combo boxes, tooltips, focus rings, troughs, rows
    medium — menus, popovers, notifications, frames, cards, dialogs
    window — headerbar / CSD window top corners (matches xfwm4 and picom)
+   4px only for menu bar item tops (very slight, user request).
    0 stays 0 (flush or linked edges, maximized/tiled windows); pills stay round.
    GTK3 has no CSS variables — keep values on this scale. */
 
@@ -13842,3 +13843,11 @@ window.popup,
 window.popup.background {
   background-color: transparent;
   background-image: none; }
+
+/* Menu bar item highlight (Thunar "File", …): very slightly rounded top
+   corners, square bottom so it joins the menu that opens below it. */
+menubar > menuitem:hover,
+menubar > menuitem:active,
+.menubar > menuitem:hover,
+.menubar > menuitem:active {
+  border-radius: 4px 4px 0 0; }

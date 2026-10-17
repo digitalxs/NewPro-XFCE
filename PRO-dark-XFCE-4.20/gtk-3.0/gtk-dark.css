@@ -21,6 +21,7 @@
    small  — buttons, entries, spin/combo boxes, tooltips, focus rings, troughs, rows
    medium — menus, popovers, notifications, frames, cards, dialogs
    window — headerbar / CSD window top corners (matches xfwm4 and picom)
+   4px only for menu bar item tops (very slight, user request).
    0 stays 0 (flush or linked edges, maximized/tiled windows); pills stay round.
    GTK3 has no CSS variables — keep values on this scale. */
 
@@ -6509,3 +6510,51 @@ window.popup,
 window.popup.background {
   background-color: transparent;
   background-image: none; }
+
+/* Panel styled like Thunar's menu bar (same as gtk.css: xfce4-panel's
+   dark mode, on by default in 4.20, loads this file): same face, edge, text colour and
+   hover colour; font comes from the system (Settings → Appearance).
+   Applies when the panel's Background style is "None (use system style)".
+   Rounded bottom corners need a compositor (xfwm4 compositing or picom). */
+.xfce4-panel.background {
+  background-color: #b6b9bf;
+  background-image: linear-gradient(to top, #7e8185 1px, #b5b8be 1px, #b6b9c0);
+  color: #202020;
+  text-shadow: none;
+  font-weight: normal;
+  border-radius: 0 0 6px 6px; }
+
+.xfce4-panel.background label,
+.xfce4-panel.background button {
+  color: #202020;
+  font-weight: normal;
+  text-shadow: none;
+  -gtk-icon-shadow: none; }
+
+.xfce4-panel.background button {
+  background-color: transparent;
+  background-image: none;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0 1px; }
+
+.xfce4-panel.background button:hover,
+.xfce4-panel.background button:active,
+.xfce4-panel.background button:checked {
+  background-color: #646772;
+  background-image: none;
+  transition: none; }
+
+.xfce4-panel.background button:hover label,
+.xfce4-panel.background button:active label,
+.xfce4-panel.background button:checked label {
+  color: #ffffff; }
+
+/* Menu bar item highlight (Thunar "File", …): very slightly rounded top
+   corners, square bottom so it joins the menu that opens below it. */
+menubar > menuitem:hover,
+menubar > menuitem:active,
+.menubar > menuitem:hover,
+.menubar > menuitem:active {
+  border-radius: 4px 4px 0 0; }

@@ -8,7 +8,7 @@ THEME = ROOT / "PRO-dark-XFCE-4.20"
 GTK3 = ["gtk-3.0/gtk.css", "gtk-3.0/gtk-dark.css"]
 BASE_REV = "aeb1f58"  # v2.2, before the radius rewrite
 
-ALLOWED = {"0", "0px", "6px", "8px", "10px"}
+ALLOWED = {"0", "0px", "4px", "6px", "8px", "10px"}  # 4px: menu bar item tops only
 PILL = {"50%", "100%", "14px", "50px", "100px"}
 SCALE_NOTE = "Radius scale: small 6px, medium 8px, window 10px"
 RADIUS_DECL = re.compile(r"(border(?:-[a-z]+)*-radius)\s*:\s*([^;}]*)")
@@ -85,6 +85,21 @@ class Gtk3RadiusTest(unittest.TestCase):
                 css = normalise((THEME / name).read_text())
                 self.assertIn(menu_rule, css)
                 self.assertIn(popup_rule, css)
+
+    def test_menubar_item_top_rounded(self):
+        rule = ("menubar > menuitem:hover, menubar > menuitem:active, "
+                ".menubar > menuitem:hover, .menubar > menuitem:active "
+                "{ border-radius: 4px 4px 0 0; }")
+        for name in GTK3:
+            with self.subTest(file=name):
+                self.assertIn(rule, normalise((THEME / name).read_text()))
+
+    def test_4px_only_on_menubar_items(self):
+        for name in GTK3:
+            with self.subTest(file=name):
+                bad = [(l, s[:60]) for l, s, t in radius_tokens(THEME / name)
+                       if t == "4px" and "menubar > menuitem" not in s]
+                self.assertEqual(bad, [])
 
     def test_menu_rule_not_overridden_later(self):
         """No rule after the menu block sets a radius on menus or popup decorations."""

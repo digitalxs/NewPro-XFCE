@@ -7,6 +7,7 @@ from tests.test_radius import RULE, strip_comments
 ROOT = Path(__file__).resolve().parent.parent
 THEME = ROOT / "PRO-dark-XFCE-4.20"
 GTK3 = THEME / "gtk-3.0" / "gtk.css"
+GTK3_DARK = THEME / "gtk-3.0" / "gtk-dark.css"
 
 
 def rules(text):
@@ -18,8 +19,8 @@ def rules(text):
     return out
 
 
-def last_body(sel):
-    found = rules(GTK3.read_text()).get(sel)
+def last_body(sel, path=GTK3):
+    found = rules(path.read_text()).get(sel)
     if not found:
         raise AssertionError(f"rule not found: {sel}")
     return found[-1]
@@ -53,6 +54,15 @@ class PanelTest(unittest.TestCase):
                     with self.subTest(selector=sel[:60]):
                         self.assertNotIn("shade(#686868, 0.35)", body)
                         self.assertNotIn("#37383d", body)
+
+    def test_panel_same_in_dark_variant(self):
+        """xfce4-panel 4.20 dark mode (on by default) loads gtk-dark.css."""
+        for sel in (".xfce4-panel.background", ".xfce4-panel.background button",
+                    ".xfce4-panel.background button:hover, "
+                    ".xfce4-panel.background button:active, "
+                    ".xfce4-panel.background button:checked"):
+            with self.subTest(selector=sel[:40]):
+                self.assertEqual(last_body(sel, GTK3_DARK), last_body(sel))
 
     def test_index_theme(self):
         text = (THEME / "index.theme").read_text()
