@@ -9,6 +9,7 @@ fresh run.
 Usage: tools/make-kvantum.py [--src /usr/share/Kvantum/KvArc] [--out Kvantum/PRO-XFCE]
 """
 import argparse
+import configparser
 import re
 from pathlib import Path
 
@@ -177,12 +178,13 @@ def rounded_frames(svg):
     return svg.replace("</svg>", group + "</svg>", 1)
 
 
-def apply_overrides(kvconfig):
+def apply_overrides(kvconfig, overrides=None):
+    overrides = KVCONFIG_OVERRIDES if overrides is None else overrides
     lines = kvconfig.splitlines()
     out, section, seen = [], None, set()
 
     def flush():
-        for key, value in KVCONFIG_OVERRIDES.get(section, {}).items():
+        for key, value in overrides.get(section, {}).items():
             if (section, key) not in seen:
                 out.append(f"{key}={value}")
 
@@ -200,14 +202,49 @@ def apply_overrides(kvconfig):
             out.append(line)
             continue
         key = line.split("=", 1)[0].strip()
-        if section in KVCONFIG_OVERRIDES and key in KVCONFIG_OVERRIDES[section]:
-            out.append(f"{key}={KVCONFIG_OVERRIDES[section][key]}")
+        if section in overrides and key in overrides[section]:
+            out.append(f"{key}={overrides[section][key]}")
             seen.add((section, key))
         elif not key.startswith("font"):
             out.append(line)
     flush()
     return "\n".join(out) + "\n"
 
+
+
+def _config(text):
+    cp = configparser.ConfigParser(interpolation=None, strict=False)
+    cp.optionxform = str
+    cp.read_string(text)
+    return cp
+
+
+def _effective(cp, section, key, depth=0):
+    if section not in cp or depth > 10:
+        return None
+    if key in cp[section]:
+        return cp[section][key]
+    parent = cp[section].get("inherits")
+    return _effective(cp, parent, key, depth + 1) if parent else None
+
+
+FRAME_KEYS = ("frame.top", "frame.bottom", "frame.left", "frame.right", "frame.expansion")
+
+
+def pin_inherited_frames(kvconfig, kvarc):
+    """Sections that only inherit PanelButtonCommand keep KvArc's frame values."""
+    ours, theirs = _config(kvconfig), _config(kvarc)
+    pins = {}
+    for section in theirs.sections():
+        if section in ("%General", "GeneralColors", "Hacks"):
+            continue
+        if _effective(ours, section, "frame.element") in FRAMES:
+            continue
+        for key in FRAME_KEYS:
+            want = _effective(theirs, section, key)
+            if want is not None and _effective(ours, section, key) != want:
+                pins.setdefault(section, {})[key] = want
+    return apply_overrides(kvconfig, pins) if pins else kvconfig
 
 def main():
     root = Path(__file__).resolve().parent.parent
@@ -218,7 +255,8 @@ def main():
     args.out.mkdir(parents=True, exist_ok=True)
     svg = rounded_frames(scope_fills(recolour((args.src / "KvArc.svg").read_text())))
     (args.out / f"{NAME}.svg").write_text(svg)
-    cfg = apply_overrides(recolour((args.src / "KvArc.kvconfig").read_text()))
+    kvarc_cfg = (args.src / "KvArc.kvconfig").read_text()
+    cfg = pin_inherited_frames(apply_overrides(recolour(kvarc_cfg)), kvarc_cfg)
     (args.out / f"{NAME}.kvconfig").write_text(cfg)
     print(f"wrote {args.out}/{NAME}.svg and {NAME}.kvconfig")
 

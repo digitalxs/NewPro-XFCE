@@ -27,6 +27,16 @@ def config(path):
     return cp
 
 
+def effective(cp, section, key, depth=0):
+    """Value of key in section, following Kvantum's inherits= chain."""
+    if section not in cp or depth > 10:
+        return None
+    if key in cp[section]:
+        return cp[section][key]
+    parent = cp[section].get("inherits")
+    return effective(cp, parent, key, depth + 1) if parent else None
+
+
 @unittest.skipUnless(SRC.is_dir(), "KvArc not installed (qt-style-kvantum-themes)")
 class KvantumTest(unittest.TestCase):
     def test_svg_valid_xml(self):
@@ -81,6 +91,25 @@ class KvantumTest(unittest.TestCase):
                     self.assertTrue(filecmp.cmp(tmp / name, OUT / name, shallow=False))
         finally:
             shutil.rmtree(tmp)
+
+    def test_other_sections_keep_kvarc_frames(self):
+        """Only button/combo/lineedit frames were redrawn at 6px; sections that
+        merely inherit PanelButtonCommand (progress bars, sliders, menu bar, tab
+        frames…) must keep KvArc's effective frame sizes and expansion."""
+        keys = ("frame.top", "frame.bottom", "frame.left", "frame.right", "frame.expansion")
+        redrawn = {"button", "combo", "lineedit"}
+        ours, theirs = config(CFG), config(SRC / "KvArc.kvconfig")
+        changed = []
+        for section in theirs.sections():
+            if section in ("%General", "GeneralColors", "Hacks"):
+                continue
+            if effective(ours, section, "frame.element") in redrawn:
+                continue
+            for key in keys:
+                if effective(ours, section, key) != effective(theirs, section, key):
+                    changed.append((section, key, effective(theirs, section, key),
+                                    effective(ours, section, key)))
+        self.assertEqual(changed, [])
 
     def test_licence_and_credit(self):
         self.assertIn("GNU GENERAL PUBLIC LICENSE", (ROOT / "Kvantum" / "COPYING").read_text())

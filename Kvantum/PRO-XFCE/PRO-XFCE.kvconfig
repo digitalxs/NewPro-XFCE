@@ -133,6 +133,7 @@ frame.bottom=1
 frame.left=1
 frame.right=1
 text.normal.color=#202020
+frame.expansion=6
 
 [DockTitle]
 inherits=PanelButtonCommand
@@ -174,6 +175,7 @@ frame.bottom=1
 frame.left=1
 frame.right=1
 frame.patternsize=20
+frame.expansion=6
 
 [GenericFrame]
 inherits=PanelButtonCommand
@@ -185,6 +187,7 @@ frame.top=3
 frame.bottom=3
 frame.left=3
 frame.right=3
+frame.expansion=6
 
 [LineEdit]
 inherits=PanelButtonCommand
@@ -233,6 +236,7 @@ frame.top=4
 frame.bottom=4
 frame.left=4
 frame.right=4
+frame.expansion=6
 
 [TreeExpander]
 inherits=PanelButtonCommand
@@ -269,6 +273,9 @@ text.normal.color=#202020
 text.focus.color=black
 frame.bottom=0
 frame.expansion=0
+frame.top=3
+frame.left=3
+frame.right=3
 
 [Slider]
 inherits=PanelButtonCommand
@@ -278,6 +285,7 @@ frame.top=3
 frame.bottom=3
 frame.left=3
 frame.right=3
+frame.expansion=6
 
 [SliderCursor]
 inherits=PanelButtonCommand
@@ -295,12 +303,21 @@ text.press.color=black
 text.toggle.color=black
 text.bold=false
 frame.expansion=8
+frame.top=3
+frame.bottom=3
+frame.left=3
+frame.right=3
 
 [ProgressbarContents]
 inherits=PanelButtonCommand
 frame=true
 frame.element=progress-pattern
 interior.element=progress-pattern
+frame.top=3
+frame.bottom=3
+frame.left=3
+frame.right=3
+frame.expansion=6
 
 [ItemView]
 inherits=PanelButtonCommand
@@ -372,6 +389,9 @@ frame.element=menubar
 interior.element=menubar
 frame.bottom=0
 frame.expansion=0
+frame.top=3
+frame.left=3
+frame.right=3
 
 [MenuBarItem]
 inherits=PanelButtonCommand
@@ -442,6 +462,7 @@ frame.top=4
 frame.bottom=4
 frame.left=4
 frame.right=4
+frame.expansion=6
 
 [ToolTip]
 inherits=GenericFrame
@@ -460,6 +481,7 @@ frame.expansion=0
 inherits=GenericFrame
 frame=false
 interior=false
+frame.expansion=6
 
 [Window]
 interior=true
