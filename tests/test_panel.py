@@ -64,6 +64,13 @@ class PanelTest(unittest.TestCase):
             with self.subTest(selector=sel[:40]):
                 self.assertEqual(last_body(sel, GTK3_DARK), last_body(sel))
 
+    def test_external_plugins_not_rounded(self):
+        """External plugins (wrapper-2.0) embed a window with the panel's classes;
+        rounding it leaves dark notches because an embedded window is opaque."""
+        for path in (GTK3, GTK3_DARK):
+            with self.subTest(file=path.name):
+                self.assertIn("border-radius: 0", last_body("#XfcePanelWindowWrapper", path))
+
     def test_index_theme(self):
         text = (THEME / "index.theme").read_text()
         self.assertRegex(text, r"(?m)^IconTheme=Papirus$")

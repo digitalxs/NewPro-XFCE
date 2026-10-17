@@ -13418,6 +13418,13 @@ XfceHeading {
 .xfce4-panel.background button:checked label {
   color: #ffffff; }
 
+/* External panel plugins (systray, sound, notifications, actions…) run in
+   wrapper-2.0 and embed a window carrying the panel's classes. Embedded
+   windows cannot be transparent, so they must not get the panel's rounded
+   corners (that leaves dark notches). */
+#XfcePanelWindowWrapper {
+  border-radius: 0; }
+
 .xfce4-panel.background menu {
 
   -gtk-icon-effect: none;
