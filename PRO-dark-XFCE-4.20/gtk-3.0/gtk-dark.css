@@ -1522,7 +1522,7 @@ headerbar,
   padding: 0 7px;
   border-width: 0px 0px 0.4px;
   border-style: solid;
-  border-color: #262a33
+  border-color: #262a33;
   color: rgba(207, 218, 231, 0.8);
   background-color: transparent;
   background-image: linear-gradient(to bottom, #353a48, #2f3540);
@@ -1934,7 +1934,7 @@ headerbar .linked:not(.vertical):not(.path-bar).stack-switcher > button:checked,
 headerbar .linked:not(.vertical).path-bar > button:active,
 .primary-toolbar .linked:not(.vertical).path-bar > button:checked,
 headerbar .linked:not(.vertical).path-bar > button:checked {
-  color: color: rgba(207, 218, 231, 0.8);
+  color: rgba(207, 218, 231, 0.8);
   border-color:rgba(21, 23, 28, 0.37);
   background-color: rgba(21, 23, 28, 0.37);
 

@@ -4416,7 +4416,7 @@ toolbar.inline-toolbar toolbutton:backdrop:only-child > button.flat{
 
 /****  LINKED:NOT(.VERTICAL).PATH-BAR  ****************/
 
-/*///////////////////////////////////////////////////////////////////////////////////*/
+/* ------------------------------------------------------------ */
 .linked:not(.vertical).path-bar > button {
 
   min-height: 16px;
@@ -4509,7 +4509,7 @@ toolbar.inline-toolbar toolbutton:backdrop:only-child > button.flat{
   margin-left: 0px;
   border-style: solid;}
 
-/*//////////////////////////////////////////////////////////////*/
+/* ------------------------------------------------------------ */
 
 .linked:not(.vertical).path-bar > button + button {
 
